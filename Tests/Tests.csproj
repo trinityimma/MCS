@@ -31,6 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\..\..\Delete\MCS\Libraries\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="NUnit3.TestAdapter">
+      <HintPath>..\..\..\..\Delete\MCS\Libraries\NUnit3.TestAdapter.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,7 +47,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PDFsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MCSLib\MCSLib.csproj">
+      <Project>{e0f21b68-c24a-40e4-8487-97abe025f672}</Project>
+      <Name>MCSLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
