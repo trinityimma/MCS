@@ -6,11 +6,11 @@ namespace MCSLib.Abstraction
 {
     public interface IPDF
     {
-        IList<double> GetDistribution(int iteration, params double[] uncertainties);
-        IList<double> GetDistribution(int iteration, IList<double> uncertainties);
-        double[] GetDistribution(Params args);
-        T GetDistribution<T>(Func<T> action, int iteration, params double[] uncertainties);
-        T GetDistribution<T>(Func<T> action, int iteration, IList<double> uncertainties);
-        T GetDistribution<T>(Func<T> action, Params args);
+        IEnumerable<double> GetDistribution(int iteration, params double[] uncertainties);
+        IEnumerable<double> GetDistribution(int iteration, IEnumerable<double> uncertainties);
+        IEnumerable<double> GetDistribution(Params args);
+        IEnumerable<double> GetDistribution(Func<double, double> action, int iteration, params double[] uncertainties);
+        IEnumerable<double> GetDistribution(Func<double, double> action, int iteration, IEnumerable<double> uncertainties);
+        IEnumerable<double> GetDistribution(Func<double, double> action, Params args);
     }
 }
