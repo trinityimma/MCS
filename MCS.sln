@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28010.2041
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCS", "MCS.csproj", "{064E11CF-2196-419B-8357-4EB0D6C8DFFA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCSLib", "MCSLib\MCSLib.csproj", "{5E56F11D-0DD7-4246-8697-D8CCA0E613AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{7DB8F0C4-A04C-44EF-9B32-884E82C62C87}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{064E11CF-2196-419B-8357-4EB0D6C8DFFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{064E11CF-2196-419B-8357-4EB0D6C8DFFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{064E11CF-2196-419B-8357-4EB0D6C8DFFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E56F11D-0DD7-4246-8697-D8CCA0E613AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E56F11D-0DD7-4246-8697-D8CCA0E613AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E56F11D-0DD7-4246-8697-D8CCA0E613AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E56F11D-0DD7-4246-8697-D8CCA0E613AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DB8F0C4-A04C-44EF-9B32-884E82C62C87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DB8F0C4-A04C-44EF-9B32-884E82C62C87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DB8F0C4-A04C-44EF-9B32-884E82C62C87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DB8F0C4-A04C-44EF-9B32-884E82C62C87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
