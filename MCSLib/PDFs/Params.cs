@@ -1,6 +1,6 @@
 ﻿namespace MCSLib.PDFs
 {
-    public class Params
+    public struct Params
     {
         public int Iteration { get; set; }
         public double[] Uncertainties { get; set; }
