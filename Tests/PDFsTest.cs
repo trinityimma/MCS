@@ -6,12 +6,12 @@ namespace Tests
     [TestFixture]
     public class PDFsTest
     {
-        [SetUp]
-        public void SetUpMockObjects()
-        {
-            mockPDF = new PDF();
-        }
+        //[SetUp]
+        //public void SetUpMockObjects()
+        //{
+        //    mockPDF = new PDF();
+        //}
 
-        private IPDF mockPDF;
+        //private IPDF mockPDF;
     }
 }
