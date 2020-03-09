@@ -82,15 +82,15 @@ namespace MCSLib.PDFs
 
         private IEnumerable<double> ValidateInput(int iteration, double[] uncertainties)
         {
-            if (uncertainties.Length != 2)
+            if (uncertainties.Length != 3)
                 throw new ArgumentOutOfRangeException("uncertainties", "uncertainties for triangular distribution must have three values, min, mode and max values");
-            return GetTriangularDistribution(iteration, uncertainties[0], uncertainties[1], uncertainties[1]);
+            return GetTriangularDistribution(iteration, uncertainties[0], uncertainties[1], uncertainties[2]);
         }
         private IEnumerable<double> ValidateInputWithDelegate(Func<double, double> action, int iteration, double[] uncertainties)
         {
-            if (uncertainties.Length != 2)
+            if (uncertainties.Length != 3)
                 throw new ArgumentOutOfRangeException("uncertainties", "uncertainties for triangular distribution must have three values, min, mode and max values");
-            return GetTriangularDistribution(action, iteration, uncertainties[0], uncertainties[1], uncertainties[1]);
+            return GetTriangularDistribution(action, iteration, uncertainties[0], uncertainties[1], uncertainties[2]);
         }
     }
 }
