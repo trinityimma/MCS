@@ -32,10 +32,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="nunit.framework">
-      <HintPath>..\..\..\..\Delete\MCS\Libraries\nunit.framework.dll</HintPath>
+      <HintPath>..\Libraries\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="NUnit3.TestAdapter">
-      <HintPath>..\..\..\..\Delete\MCS\Libraries\NUnit3.TestAdapter.dll</HintPath>
+      <HintPath>..\Libraries\NUnit3.TestAdapter.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="PDFsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimulationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MCSLib\MCSLib.csproj">

@@ -42,13 +42,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstraction\IPDF.cs" />
+    <Compile Include="Abstraction\ISimulator.cs" />
     <Compile Include="MathUtils.cs" />
     <Compile Include="PDFs\Params.cs" />
     <Compile Include="PDFs\PDF.cs" />
     <Compile Include="PDFs\Triangular.cs" />
     <Compile Include="PDFs\Uniform.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Simulator.cs" />
+    <Compile Include="Simulation\SimulationResult.cs" />
+    <Compile Include="Simulation\Simulator.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
