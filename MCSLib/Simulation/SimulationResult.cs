@@ -1,18 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MCSLib.Simulation
+﻿namespace MCSLib.Simulation
 {
+    /// <summary>
+    /// Represents simulated results
+    /// </summary>
     public class SimulationResult
     {
-        public IList<double> RelativeFrequencies { get; set; }
-        public IList<double> CumulativeFrequencies { get; set; }
-        public IList<double> Expectations { get; set; }
-        public IList<double> Frequencies { get; set; }
-        public IList<double> BinSizes { get; set; }
-        public IList<double> SimulatedValues { get; set; }
+        /// <summary>
+        /// Returns the relative frequency 
+        /// calculated from the simulated results
+        /// </summary>
+        public double RelativeFrequency { get; set; }
+        /// <summary>
+        /// Returns the cumulative frequency 
+        /// calculated from the simulated results
+        /// </summary>
+        public double CumulativeFrequency { get; set; }
+        /// <summary>
+        /// Returns the probability of uncertainties 
+        /// calculated from the simulated results
+        /// </summary>
+        public double Expectation { get; set; }
     }
 }

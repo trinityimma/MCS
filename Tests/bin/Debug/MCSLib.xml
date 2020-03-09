@@ -1,0 +1,370 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MCSLib</name>
+    </assembly>
+    <members>
+        <member name="T:MCSLib.Abstraction.IPDF">
+            <summary>
+            Interface for probability distribution
+            </summary>
+        </member>
+        <member name="M:MCSLib.Abstraction.IPDF.GetDistribution(System.Int32,System.Double[])">
+            <summary>
+            Get simulated probability distribution
+            </summary>
+            <param name="iteration">represent the number of iteration for the simulation</param>
+            <param name="uncertainties">represent uncertainties:
+            values are added in the order; minValue, maxValue, modeValue, 
+            averageValue and standardDeviationValue in that order.</param>
+            <returns>IEnumerable of simulated values</returns>
+        </member>
+        <member name="M:MCSLib.Abstraction.IPDF.GetDistribution(System.Int32,System.Collections.Generic.List{System.Double})">
+            <summary>
+            Get simulated probability distribution
+            </summary>
+            <param name="iteration">represent the number of iteration for the simulation</param>
+            <param name="uncertainties">represent uncertainties:
+            values are added in the order; minValue, maxValue, modeValue, 
+            averageValue and standardDeviationValue in that order.</param>
+            <returns>IEnumerable of simulated values</returns>
+        </member>
+        <member name="M:MCSLib.Abstraction.IPDF.GetDistribution(MCSLib.PDFs.Params)">
+            <summary>
+             <param name="args">represent probability distribution
+             input parameters for simulation</param>
+            </summary>
+        </member>
+        <member name="M:MCSLib.Abstraction.IPDF.GetDistribution(System.Func{System.Double,System.Double},System.Int32,System.Double[])">
+            <summary>
+            Get simulated probability distribution
+            </summary>
+            <param name="action">represent the delegate that needs this random distribution as argument</param>
+            <param name="iteration">represent the number of iteration for the simulation</param>
+            <param name="uncertainties">represent uncertainties:
+            values are added in the order; minValue, maxValue, modeValue, 
+            averageValue and standardDeviationValue in that order.</param>
+            <returns>IEnumerable of simulated values</returns>
+        </member>
+        <member name="M:MCSLib.Abstraction.IPDF.GetDistribution(System.Func{System.Double,System.Double},System.Int32,System.Collections.Generic.List{System.Double})">
+            <summary>
+            Get simulated probability distribution
+            </summary>
+            <param name="action">represent the delegate that needs this random distribution as argument</param>
+            <param name="iteration">represent the number of iteration for the simulation</param>
+            <param name="uncertainties">represent uncertainties:
+            values are added in the order; minValue, maxValue, modeValue, 
+            averageValue and standardDeviationValue in that order.</param>
+            <returns>IEnumerable of simulated values</returns>
+        </member>
+        <member name="M:MCSLib.Abstraction.IPDF.GetDistribution(System.Func{System.Double,System.Double},MCSLib.PDFs.Params)">
+            <summary>
+            Get simulated probability distribution
+            </summary>
+            <param name="action">represent the delegate that needs this random distribution as argument</param>
+            <param name = "args" > represent probability distribution
+             input parameters for simulation</param>
+            <returns>IEnumerable of simulated values</returns>
+        </member>
+        <member name="T:MCSLib.Abstraction.ISimulator">
+            <summary>
+            A simulator interface for running Monte Carlo simulation
+            </summary>
+        </member>
+        <member name="P:MCSLib.Abstraction.ISimulator.SimulationResults">
+            <summary>
+            Returns simulation results based on Monte Carlo method
+            </summary>
+        </member>
+        <member name="M:MCSLib.Abstraction.ISimulator.Run">
+            <summary>
+            Returns simulation results based on Monte Carlo method
+            </summary>
+        </member>
+        <member name="M:MCSLib.Abstraction.ISimulator.Run(MCSLib.Simulation.DistributionInput,MCSLib.PDFs.DistributionType)">
+            <summary>
+            Returns simulation results based on Monte Carlo method
+            </summary>
+            <param name="distributionInput">Represents user defined variables for 
+            probability distribution and simulation results</param>
+            <param name="distributionType">Represents selected probability distribution</param>
+        </member>
+        <member name="P:MCSLib.PDFs.Params.Iteration">
+            <summary>
+             <param name="Iteration">represent the number of iteration for the simulation</param>
+            </summary>
+        </member>
+        <member name="P:MCSLib.PDFs.Params.Uncertainties">
+            <summary>
+            <param name="UncertaintyArray">represent uncertainties:
+            values are added in the order; minValue, maxValue, modeValue, 
+            averageValue and standardDeviationValue in that order.
+            </param>
+            </summary>
+        </member>
+        <member name="T:MCSLib.PDFs.Triangular">
+            <summary>
+            Triangular distribution
+            </summary>
+        </member>
+        <member name="M:MCSLib.PDFs.Triangular.GetDistribution(System.Int32,System.Double[])">
+            <summary>
+            Get simulated probability distribution
+            </summary>
+            <param name="iteration">represent the number of iteration for the simulation</param>
+            <param name="uncertainties">represent uncertainties:
+            values are added in the order; minValue, maxValue, modeValue, 
+            averageValue and standardDeviationValue in that order.</param>
+            <returns>IEnumerable of simulated values</returns>
+        </member>
+        <member name="M:MCSLib.PDFs.Triangular.GetDistribution(System.Int32,System.Collections.Generic.List{System.Double})">
+            <summary>
+            Get simulated probability distribution
+            </summary>
+            <param name="iteration">represent the number of iteration for the simulation</param>
+            <param name="uncertainties">represent uncertainties:
+            values are added in the order; minValue, maxValue, modeValue, 
+            averageValue and standardDeviationValue in that order.</param>
+            <returns>IEnumerable of simulated values</returns>
+        </member>
+        <member name="M:MCSLib.PDFs.Triangular.GetDistribution(MCSLib.PDFs.Params)">
+            <summary>
+             <param name="args">represent probability distribution
+             input parameters for simulation</param>
+            </summary>
+        </member>
+        <member name="M:MCSLib.PDFs.Triangular.GetDistribution(System.Func{System.Double,System.Double},System.Int32,System.Double[])">
+            <summary>
+            Get simulated probability distribution
+            </summary>
+            <param name="action">represent the delegate that needs this random distribution as argument</param>
+            <param name="iteration">represent the number of iteration for the simulation</param>
+            <param name="args">represent uncertainties:
+            values are added in the order; minValue, maxValue, modeValue, 
+            averageValue and standardDeviationValue in that order.</param>
+            <returns>IEnumerable of simulated values</returns>
+        </member>
+        <member name="M:MCSLib.PDFs.Triangular.GetDistribution(System.Func{System.Double,System.Double},System.Int32,System.Collections.Generic.List{System.Double})">
+            <summary>
+            Get simulated probability distribution
+            </summary>
+            <param name="action">represent the delegate that needs this random distribution as argument</param>
+            <param name="iteration">represent the number of iteration for the simulation</param>
+            <param name="args">represent uncertainties:
+            values are added in the order; minValue, maxValue, modeValue, 
+            averageValue and standardDeviationValue in that order.</param>
+            <returns>IEnumerable of simulated values</returns>
+        </member>
+        <member name="M:MCSLib.PDFs.Triangular.GetDistribution(System.Func{System.Double,System.Double},MCSLib.PDFs.Params)">
+            <summary>
+            Get simulated probability distribution
+            </summary>
+            <param name="action">represent the delegate that needs this random distribution as argument</param>
+            <param name = "args" > represent probability distribution
+             input parameters for simulation</param>
+            <returns>IEnumerable of simulated values</returns>
+        </member>
+        <member name="T:MCSLib.PDFs.Uniform">
+            <summary>
+            Uniform (contineous) distribution
+            </summary>
+        </member>
+        <member name="M:MCSLib.PDFs.Uniform.GetDistribution(System.Int32,System.Double[])">
+            <summary>
+            Get simulated probability distribution
+            </summary>
+            <param name="iteration">represent the number of iteration for the simulation</param>
+            <param name="uncertainties">represent uncertainties:
+            values are added in the order; minValue, maxValue, modeValue, 
+            averageValue and standardDeviationValue in that order.</param>
+            <returns>IEnumerable of simulated values</returns>
+        </member>
+        <member name="M:MCSLib.PDFs.Uniform.GetDistribution(System.Int32,System.Collections.Generic.List{System.Double})">
+            <summary>
+            Get simulated probability distribution
+            </summary>
+            <param name="iteration">represent the number of iteration for the simulation</param>
+            <param name="uncertainties">represent uncertainties:
+            values are added in the order; minValue, maxValue, modeValue, 
+            averageValue and standardDeviationValue in that order.</param>
+            <returns>IEnumerable of simulated values</returns>
+        </member>
+        <member name="M:MCSLib.PDFs.Uniform.GetDistribution(MCSLib.PDFs.Params)">
+            <summary>
+             <param name="args">represent probability distribution
+             input parameters for simulation</param>
+            </summary>
+        </member>
+        <member name="M:MCSLib.PDFs.Uniform.GetDistribution(System.Func{System.Double,System.Double},System.Int32,System.Double[])">
+            <summary>
+            Get simulated probability distribution
+            </summary>
+            <param name="action">represent the delegate that needs this random distribution as argument</param>
+            <param name="iteration">represent the number of iteration for the simulation</param>
+            <param name="args">represent uncertainties:
+            values are added in the order; minValue, maxValue, modeValue, 
+            averageValue and standardDeviationValue in that order.</param>
+            <returns>IEnumerable of simulated values</returns>
+        </member>
+        <member name="M:MCSLib.PDFs.Uniform.GetDistribution(System.Func{System.Double,System.Double},System.Int32,System.Collections.Generic.List{System.Double})">
+            <summary>
+            Get simulated probability distribution
+            </summary>
+            <param name="action">represent the delegate that needs this random distribution as argument</param>
+            <param name="iteration">represent the number of iteration for the simulation</param>
+            <param name="args">represent uncertainties:
+            values are added in the order; minValue, maxValue, modeValue, 
+            averageValue and standardDeviationValue in that order.</param>
+            <returns>IEnumerable of simulated values</returns>
+        </member>
+        <member name="M:MCSLib.PDFs.Uniform.GetDistribution(System.Func{System.Double,System.Double},MCSLib.PDFs.Params)">
+            <summary>
+            Get simulated probability distribution
+            </summary>
+            <param name="action">represent the delegate that needs this random distribution as argument</param>
+            <param name = "args" > represent probability distribution
+             input parameters for simulation</param>
+            <returns>IEnumerable of simulated values</returns>
+        </member>
+        <member name="T:MCSLib.PDF">
+            <summary>
+            Base class for probability distribution
+            </summary>
+        </member>
+        <member name="M:MCSLib.PDF.GetDistribution(System.Int32,System.Double[])">
+            <summary>
+            Get simulated probability distribution
+            </summary>
+            <param name="iteration">represent the number of iteration for the simulation</param>
+            <param name="uncertainties">represent uncertainties:
+            values are added in the order; minValue, maxValue, modeValue, 
+            averageValue and standardDeviationValue in that order.</param>
+            <returns>IEnumerable of simulated values</returns>
+        </member>
+        <member name="M:MCSLib.PDF.GetDistribution(System.Int32,System.Collections.Generic.List{System.Double})">
+            <summary>
+            Get simulated probability distribution
+            </summary>
+            <param name="iteration">represent the number of iteration for the simulation</param>
+            <param name="uncertainties">represent uncertainties:
+            values are added in the order; minValue, maxValue, modeValue, 
+            averageValue and standardDeviationValue in that order.</param>
+            <returns>IEnumerable of simulated values</returns>
+        </member>
+        <member name="M:MCSLib.PDF.GetDistribution(MCSLib.PDFs.Params)">
+            <summary>
+             <param name="args">represent probability distribution
+             input parameters for simulation</param>
+            </summary>
+        </member>
+        <member name="M:MCSLib.PDF.GetDistribution(System.Func{System.Double,System.Double},System.Int32,System.Double[])">
+            <summary>
+            Get simulated probability distribution
+            </summary>
+            <param name="action">represent the delegate that needs this random distribution as argument</param>
+            <param name="iteration">represent the number of iteration for the simulation</param>
+            <param name="uncertainties">represent uncertainties:
+            values are added in the order; minValue, maxValue, modeValue, 
+            averageValue and standardDeviationValue in that order.</param>
+            <returns>IEnumerable of simulated values</returns>
+        </member>
+        <member name="M:MCSLib.PDF.GetDistribution(System.Func{System.Double,System.Double},System.Int32,System.Collections.Generic.List{System.Double})">
+            <summary>
+            Get simulated probability distribution
+            </summary>
+            <param name="action">represent the delegate that needs this random distribution as argument</param>
+            <param name="iteration">represent the number of iteration for the simulation</param>
+            <param name="uncertainties">represent uncertainties:
+            values are added in the order; minValue, maxValue, modeValue, 
+            averageValue and standardDeviationValue in that order.</param>
+            <returns>IEnumerable of simulated values</returns>
+        </member>
+        <member name="M:MCSLib.PDF.GetDistribution(System.Func{System.Double,System.Double},MCSLib.PDFs.Params)">
+            <summary>
+            Get simulated probability distribution
+            </summary>
+            <param name="action">represent the delegate that needs this random distribution as argument</param>
+            <param name = "args" > represent probability distribution
+             input parameters for simulation</param>
+            <returns>IEnumerable of simulated values</returns>
+        </member>
+        <member name="T:MCSLib.Simulation.DistributionInput">
+            <summary>
+            Represents user defined variables for 
+            probability distribution and simulation results
+            </summary>
+        </member>
+        <member name="P:MCSLib.Simulation.DistributionInput.Args">
+            <summary>
+             Represent probability distribution
+             input parameters for simulation
+            </summary>
+        </member>
+        <member name="P:MCSLib.Simulation.DistributionInput.Iteration">
+            <summary>
+             Represent the number of iteration for the simulation
+            </summary>
+        </member>
+        <member name="P:MCSLib.Simulation.DistributionInput.Interval">
+            <summary>
+             Represent the class interval for 
+             creating the bin sizes
+            </summary>
+        </member>
+        <member name="P:MCSLib.Simulation.DistributionInput.UncertaintyList">
+             /// <summary>
+            Represent uncertainties:
+            values are added in the order; minValue, maxValue, modeValue, 
+            averageValue and standardDeviationValue in that order.
+            </summary>
+        </member>
+        <member name="P:MCSLib.Simulation.DistributionInput.UncertaintyArray">
+            <summary>
+            Represent uncertainties:
+            values are added in the order; minValue, maxValue, modeValue, 
+            averageValue and standardDeviationValue in that order.
+            </summary>
+        </member>
+        <member name="P:MCSLib.Simulation.DistributionInput.Delegate">
+            <summary>
+            Represent the delegate that needs this random distribution as argument
+            </summary>
+        </member>
+        <member name="T:MCSLib.Simulation.Simulator">
+            <summary>
+            Simulator for running Monte Carlo simulation
+            </summary>
+        </member>
+        <member name="P:MCSLib.Simulation.Simulator.SimulationResults">
+            <summary>
+            Returns simulation results based on Monte Carlo method
+            </summary>
+        </member>
+        <member name="M:MCSLib.Simulation.Simulator.Run">
+            <summary>
+            Returns simulation results based on Monte Carlo method
+            </summary>
+        </member>
+        <member name="M:MCSLib.Simulation.Simulator.Run(MCSLib.Simulation.DistributionInput,MCSLib.PDFs.DistributionType)">
+            <summary>
+            Returns simulation results based on Monte Carlo method
+            </summary>
+            <param name="distributionInput">Represents user defined variables for 
+            probability distribution and simulation results</param>
+            <param name="distributionType">Represents selected probability distribution</param>
+        </member>
+        <member name="M:MCSLib.Simulation.Simulator.#ctor(MCSLib.Simulation.DistributionInput,MCSLib.PDFs.DistributionType)">
+            <summary>
+            Simulator contructor
+            </summary>
+            <param name="distributionInput">Represents user defined variables for 
+            probability distribution and simulation results</param>
+            <param name="distributionType">Represents selected probability distribution</param>
+        </member>
+        <member name="M:MCSLib.Simulation.Simulator.#ctor">
+            <summary>
+            Simulator default contructor
+            </summary>
+        </member>
+    </members>
+</doc>

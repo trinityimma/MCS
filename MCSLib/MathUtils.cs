@@ -1,38 +1,44 @@
-﻿using System.Collections.Generic;
+﻿using MCSLib.Simulation;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace MCSLib
 {
-    public static class MathUtils
+    internal static class MathUtils
     {
-        public static List<double> GetExpectation(int interval, IList<double> reletivefrequencies, IList<double> cumfrequencies)
+        internal static IList<double> GetExpectation(StatisticalInput statisticalInput, IList<double> simulatedValues)
         {
             var result = new List<double>();
-            for (int i = 0; i < interval; i++)
+            IList<double> reletivefrequencies = GetRelFrequency(statisticalInput,simulatedValues);
+            IList<double> cumfrequencies = GetCumFrequency(statisticalInput, simulatedValues);
+            for (int i = 0; i < statisticalInput.Interval; i++)
                 result.Add(cumfrequencies[i] - reletivefrequencies[i]);
             return result;
         }
-        public static List<double> GetCumFrequency(int interval, IList<double> reletivefrequencies)
+        internal static IList<double> GetCumFrequency(StatisticalInput statisticalInput, IList<double> simulatedValues)
         {
             var result = new List<double> { 1};
-            for (int i = 0; i < interval - 1; i++)
+            IList<double> reletivefrequencies = GetRelFrequency(statisticalInput,simulatedValues);
+            for (int i = 0; i < statisticalInput.Interval - 1; i++)
                 result.Add(result[i] - reletivefrequencies[i]);
             return result;
         }
 
-        public static List<double> GetRelFrequency(int interval, IList<double> frequencies)
+        public static IList<double> GetRelFrequency(StatisticalInput statisticalInput, IList<double> simulatedValues)
         {
             var result = new List<double>();
-            for (int i = 0; i < interval; i++)
+            IList<double> frequencies = GetFrequency(statisticalInput, simulatedValues);
+            double sum = frequencies.Sum();
+
+            for (int i = 0; i < statisticalInput.Interval; i++)
             {
-                double sum = frequencies.Sum();
                 double relf = frequencies[i] / sum;
                 result.Add(relf);
             }
             return result;
         }
 
-        public static List<double> GetBinSize(double maxValue, double minValue, int interval)
+        private static IList<double> GetBinSize(double maxValue, double minValue, int interval)
         {
             double step = (maxValue - minValue) / interval;
             var ans = new List<double>();
@@ -45,19 +51,20 @@ namespace MCSLib
             return ans;
         }
 
-        public static List<double> GetFrequency(int iteration, int interval, IList<double> binSizes, IList<double> simulatedValues)
+        private static IList<double> GetFrequency(StatisticalInput statisticalInput,IList<double> simulatedValues)
         {
             double lowerBound = -1;
             double upperBound = 0;
+            IList<double> binSizes = GetBinSize(statisticalInput.MaxValue, statisticalInput.MinValue, statisticalInput.Interval);
             List<double> result = new List<double>();
-            int dataNum = iteration - interval;
+            int dataNum = statisticalInput.Iteration - statisticalInput.Interval;
 
-            for (int i = 0; i < iteration - dataNum; i++)
+            for (int i = 0; i < statisticalInput.Iteration - dataNum; i++)
             {
                 int frequency = 0;
                 upperBound = binSizes[i];
 
-                for (int j = 0; j < iteration; j++)
+                for (int j = 0; j < statisticalInput.Iteration; j++)
                 {
                     if (simulatedValues[j] > lowerBound && simulatedValues[j] <= upperBound)
                     {

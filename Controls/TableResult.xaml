@@ -1,0 +1,41 @@
+﻿<DataGrid x:Class="MCS.Controls.TableResult"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"           
+             d:DesignHeight="450" d:DesignWidth="800"
+            Margin="2" LoadingRow="DataGrid_LoadingRow"
+            ItemsSource="{Binding SimResultList}"
+            CanUserAddRows="False"
+            AutoGenerateColumns="False"
+            VerticalGridLinesBrush="Silver"
+            HorizontalGridLinesBrush="Silver"
+            AlternatingRowBackground="AliceBlue"
+            BorderBrush="Silver" 
+            BorderThickness="1" 
+            Background="White" 
+            HorizontalScrollBarVisibility="Auto"
+            VerticalScrollBarVisibility="Auto"
+            VirtualizingStackPanel.VirtualizationMode="Recycling"
+            VerticalContentAlignment="Center" >
+    <DataGrid.Resources>
+            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFE9B5" />
+            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="#015874" />
+        </DataGrid.Resources>
+
+    <DataGrid.Columns>
+        <DataGridTextColumn Header="Cummulative Frequency"
+                                        Width="*"
+                                    Binding="{Binding CumulativeFrequency}" />
+
+        <DataGridTextColumn Header="Relative Frequency"
+                                         Width="*"
+                                        Binding="{Binding RelativeFrequency}" />
+
+        <DataGridTextColumn Header="Expectation"
+                                         Width="*"
+                                        Binding="{Binding Expectation}"/>
+
+    </DataGrid.Columns>
+</DataGrid>

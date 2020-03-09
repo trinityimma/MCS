@@ -1,11 +1,28 @@
-﻿using MCSLib.Simulation;
+﻿using MCSLib.PDFs;
+using MCSLib.Simulation;
+using System.Collections.Generic;
 
 namespace MCSLib.Abstraction
 {
+    /// <summary>
+    /// A simulator interface for running Monte Carlo simulation
+    /// </summary>
     public interface ISimulator
     {
-        SimulationResult SimulationResult { get; set; }
-        SimulationResult Run();
-        SimulationResult Run(IPDF pDF);
+        /// <summary>
+        /// Returns simulation results based on Monte Carlo method
+        /// </summary>
+        IList<SimulationResult> SimulationResults { get; set; }
+        /// <summary>
+        /// Returns simulation results based on Monte Carlo method
+        /// </summary>
+        IList<SimulationResult> Run();
+        /// <summary>
+        /// Returns simulation results based on Monte Carlo method
+        /// </summary>
+        /// <param name="distributionInput">Represents user defined variables for 
+        /// probability distribution and simulation results</param>
+        /// <param name="distributionType">Represents selected probability distribution</param>
+        IList<SimulationResult> Run(DistributionInput distributionInput, DistributionType distributionType);
     }
 }

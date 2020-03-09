@@ -13,3 +13,8 @@ C:\Users\john.ansa\Desktop\2020\private\New folder\MCS\obj\Debug\MCS.csproj.Gene
 C:\Users\john.ansa\Desktop\2020\private\New folder\MCS\obj\Debug\MCS.csproj.CoreCompileInputs.cache
 C:\Users\john.ansa\Desktop\2020\private\New folder\MCS\obj\Debug\MCS.exe
 C:\Users\john.ansa\Desktop\2020\private\New folder\MCS\obj\Debug\MCS.pdb
+C:\Users\john.ansa\Desktop\2020\private\New folder\MCS\bin\Debug\MCSLib.dll
+C:\Users\john.ansa\Desktop\2020\private\New folder\MCS\bin\Debug\MCSLib.pdb
+C:\Users\john.ansa\Desktop\2020\private\New folder\MCS\obj\Debug\MCS.csproj.CopyComplete
+C:\Users\john.ansa\Desktop\2020\private\New folder\MCS\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\john.ansa\Desktop\2020\private\New folder\MCS\bin\Debug\MCSLib.xml

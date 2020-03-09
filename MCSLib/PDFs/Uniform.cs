@@ -3,51 +3,95 @@ using System.Collections.Generic;
 
 namespace MCSLib.PDFs
 {
+    /// <summary>
+    /// Uniform (contineous) distribution
+    /// </summary>
     public class Uniform : PDF
     {
-        public override IEnumerable<double> GetDistribution(int iteration, params double[] uncertainties)
+        /// <summary>
+        /// Get simulated probability distribution
+        /// </summary>
+        /// <param name="iteration">represent the number of iteration for the simulation</param>
+        /// <param name="uncertainties">represent uncertainties:
+        /// values are added in the order; minValue, maxValue, modeValue, 
+        /// averageValue and standardDeviationValue in that order.</param>
+        /// <returns>IEnumerable of simulated values</returns>
+        public override IList<double> GetDistribution(int iteration, params double[] uncertainties)
         {
             return ValidateInput(iteration, uncertainties);
         }
+        /// <summary>
+        /// Get simulated probability distribution
+        /// </summary>
+        /// <param name="iteration">represent the number of iteration for the simulation</param>
+        /// <param name="uncertainties">represent uncertainties:
+        /// values are added in the order; minValue, maxValue, modeValue, 
+        /// averageValue and standardDeviationValue in that order.</param>
+        /// <returns>IEnumerable of simulated values</returns>
 
-        public override IEnumerable<double> GetDistribution(int iteration, List<double> uncertainties)
+        public override IList<double> GetDistribution(int iteration, List<double> uncertainties)
         {
             return ValidateInput(iteration, uncertainties.ToArray());
         }
-
-        public override IEnumerable<double> GetDistribution(Params args)
+        /// <summary>
+        ///  <param name="args">represent probability distribution
+        ///  input parameters for simulation</param>
+        /// </summary>
+        public override IList<double> GetDistribution(Params args)
         {
             return ValidateInput(args.Iteration, args.Uncertainties);
         }
-
-        public override IEnumerable<double> GetDistribution(Func<double, double> action, int iteration, params double[] args)
+        /// <summary>
+        /// Get simulated probability distribution
+        /// </summary>
+        /// <param name="action">represent the delegate that needs this random distribution as argument</param>
+        /// <param name="iteration">represent the number of iteration for the simulation</param>
+        /// <param name="args">represent uncertainties:
+        /// values are added in the order; minValue, maxValue, modeValue, 
+        /// averageValue and standardDeviationValue in that order.</param>
+        /// <returns>IEnumerable of simulated values</returns>
+        public override IList<double> GetDistribution(Func<double, double> action, int iteration, params double[] args)
         {
             return ValidateInputWithDelegate(action, iteration, args);
         }
-
-        public override IEnumerable<double> GetDistribution(Func<double, double> action, int iteration, List<double> args)
+        /// <summary>
+        /// Get simulated probability distribution
+        /// </summary>
+        /// <param name="action">represent the delegate that needs this random distribution as argument</param>
+        /// <param name="iteration">represent the number of iteration for the simulation</param>
+        /// <param name="args">represent uncertainties:
+        /// values are added in the order; minValue, maxValue, modeValue, 
+        /// averageValue and standardDeviationValue in that order.</param>
+        /// <returns>IEnumerable of simulated values</returns>
+        public override IList<double> GetDistribution(Func<double, double> action, int iteration, List<double> args)
         {
             return ValidateInputWithDelegate(action, iteration, args.ToArray());
         }
-
-        public override IEnumerable<double> GetDistribution(Func<double, double> action, Params args)
+        /// <summary>
+        /// Get simulated probability distribution
+        /// </summary>
+        /// <param name="action">represent the delegate that needs this random distribution as argument</param>
+        /// <param name = "args" > represent probability distribution
+        ///  input parameters for simulation</param>
+        /// <returns>IEnumerable of simulated values</returns>
+        public override IList<double> GetDistribution(Func<double, double> action, Params args)
         {
             return ValidateInputWithDelegate(action, args.Iteration, args.Uncertainties);
         }
 
-        private IEnumerable<double> ValidateInput(int iteration, double[] uncertainties)
+        private IList<double> ValidateInput(int iteration, double[] uncertainties)
         {
             if (uncertainties.Length != 2)
                 throw new ArgumentOutOfRangeException("uncertainties", "uncertainties for uniform distribution must have two values, minValue and maxValue");
             return GetUniformDistribution(iteration, uncertainties[0], uncertainties[1]);
         }
-        private IEnumerable<double> ValidateInputWithDelegate(Func<double, double> action,int iteration, double[] uncertainties)
+        private IList<double> ValidateInputWithDelegate(Func<double, double> action,int iteration, double[] uncertainties)
         {
             if (uncertainties.Length != 2)
                 throw new ArgumentOutOfRangeException("uncertainties", "uncertainties for uniform distribution must have two values, minValue and maxValue");
             return GetUniformDistribution(action, iteration, uncertainties[0], uncertainties[1]);
         }
-        private IEnumerable<double> GetUniformDistribution(int iteration, double minValue, double maxValue)
+        private IList<double> GetUniformDistribution(int iteration, double minValue, double maxValue)
         {
             Random rand = new Random();
             var results = new List<double>();
@@ -59,7 +103,7 @@ namespace MCSLib.PDFs
             return results;
         }
 
-        private IEnumerable<double> GetUniformDistribution(Func<double, double> action, int iteration, double minValue, double maxValue)
+        private IList<double> GetUniformDistribution(Func<double, double> action, int iteration, double minValue, double maxValue)
         {
             Random rand = new Random();
             var results = new List<double>();
