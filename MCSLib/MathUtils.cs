@@ -19,11 +19,7 @@ namespace MCSLib
 
         internal static double GoodnessOfFitTest(Func<double> @delegate)
         {
-            double a = @delegate();
-            double b = @delegate();
-            double c = @delegate();
-            double d = @delegate();
-            return  ((7758*96.83 * a * b * (100 - c)) / (d));
+            return  ((751207.14 * @delegate() * @delegate() * (100 - @delegate())) / (@delegate()));
         }
         internal static IList<double> GetCumFrequency(StatisticalInput statisticalInput, IList<double> simulatedValues)
         {

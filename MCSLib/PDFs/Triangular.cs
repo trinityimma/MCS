@@ -113,7 +113,7 @@ namespace MCSLib.PDFs
                     double b = minValue + Math.Sqrt((rand.NextDouble() * (modeValue - minValue) * (maxValue - minValue)));
                     double c = minValue + Math.Sqrt((rand.NextDouble() * (modeValue - minValue) * (maxValue - minValue)));
                     double d = minValue + Math.Sqrt((rand.NextDouble() * (modeValue - minValue) * (maxValue - minValue)));
-                    double fit = ((7758 * 96.83 * a * b * (100 - c)) / (d));
+                    double fit = ((751207.14 * a * b * (100 - c)) / (d));
                     results.Add(action(fit));
                 }
                 else
@@ -122,7 +122,7 @@ namespace MCSLib.PDFs
                     double b = modeValue - Math.Sqrt((1 - rand.NextDouble() * (modeValue - minValue) * (modeValue - maxValue)));
                     double c = modeValue - Math.Sqrt((1 - rand.NextDouble() * (modeValue - minValue) * (modeValue - maxValue)));
                     double d = modeValue - Math.Sqrt((1 - rand.NextDouble() * (modeValue - minValue) * (modeValue - maxValue)));
-                    double fit = ((7758 * 96.83 * a * b * (100 - c)) / (d));
+                    double fit = ((751207.14 * a * b * (100 - c)) / (d));
                     results.Add(action(fit));
                 }
             }
