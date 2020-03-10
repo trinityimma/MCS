@@ -71,9 +71,14 @@
             A simulator interface for running Monte Carlo simulation
             </summary>
         </member>
-        <member name="P:MCSLib.Abstraction.ISimulator.SimulationResults">
+        <member name="P:MCSLib.Abstraction.ISimulator.SimulatedValues">
             <summary>
             Returns simulation results based on Monte Carlo method
+            </summary>
+        </member>
+        <member name="P:MCSLib.Abstraction.ISimulator.SimulationResults">
+            <summary>
+            Returns CDP and PDF based on Monte Carlo method
             </summary>
         </member>
         <member name="M:MCSLib.Abstraction.ISimulator.Run">
@@ -341,6 +346,12 @@
             calculated from the simulated results
             </summary>
         </member>
+        <member name="P:MCSLib.Simulation.SimulationResult.BinSize">
+            <summary>
+            Returns the Bin Size 
+            calculated from the simulated results
+            </summary>
+        </member>
         <member name="P:MCSLib.Simulation.SimulationResult.CumulativeFrequency">
             <summary>
             Returns the cumulative frequency 
@@ -356,11 +367,6 @@
         <member name="T:MCSLib.Simulation.Simulator">
             <summary>
             Simulator for running Monte Carlo simulation
-            </summary>
-        </member>
-        <member name="P:MCSLib.Simulation.Simulator.SimulationResults">
-            <summary>
-            Returns simulation results based on Monte Carlo method
             </summary>
         </member>
         <member name="M:MCSLib.Simulation.Simulator.Run">
@@ -387,6 +393,16 @@
         <member name="M:MCSLib.Simulation.Simulator.#ctor">
             <summary>
             Simulator default contructor
+            </summary>
+        </member>
+        <member name="P:MCSLib.Simulation.Simulator.SimulationResults">
+            <summary>
+            Returns simulation results based on Monte Carlo method
+            </summary>
+        </member>
+        <member name="P:MCSLib.Simulation.Simulator.SimulatedValues">
+            <summary>
+            Returns simulation results based on Monte Carlo method
             </summary>
         </member>
     </members>

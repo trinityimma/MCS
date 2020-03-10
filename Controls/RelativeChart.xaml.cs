@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OxyPlot.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,9 +19,9 @@ namespace MCS.Controls
     /// <summary>
     /// Interaction logic for ChartResult.xaml
     /// </summary>
-    public partial class ChartResult : UserControl
+    public partial class RelativeChart : Plot
     {
-        public ChartResult()
+        public RelativeChart()
         {
             InitializeComponent();
         }

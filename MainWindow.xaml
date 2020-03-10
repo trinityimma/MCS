@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MCS"
+        xmlns:con="clr-namespace:MCS.Controls"
         mc:Ignorable="d"
         Title="Demo" WindowState="Maximized">
     <Window.Resources>
@@ -17,6 +18,7 @@
             <Setter Property="VerticalContentAlignment" Value="Center"/>
         </Style>
         <local:BackgroundConverter x:Key="backgroundConverter"/>
+        <BooleanToVisibilityConverter x:Key="bool2Visibility"/>
     </Window.Resources>
     <Border Padding="5">
         <Grid>
@@ -90,7 +92,8 @@
                         Margin="2"
                         HorizontalAlignment="Right">
                 <TextBlock Text="Working Stress Load:"
-                           VerticalAlignment="Center"/>
+                           VerticalAlignment="Center"
+                           />
                 <TextBox Width="100" Height="23"
                          Text="{Binding WSLoad,UpdateSourceTrigger=PropertyChanged}"/>
                 
@@ -103,43 +106,23 @@
                 <TextBox Width="100" Height="23"
                          Text="{Binding Interval,UpdateSourceTrigger=PropertyChanged}"/>
                 <Button Content="Run Simulation" Command="{Binding RunMCSCommand}"
-                        Width="100" Height="23" />
+                        Width="100" Height="23" Margin="2"/>
+                <Button Content="View Plot" Command="{Binding ChartCommand}"
+                        Width="100" Height="23" Margin="2"/>
             </StackPanel>
-            <DataGrid Grid.Row="2"
-                      Margin="2" LoadingRow="DataGrid_LoadingRow"
-                     ItemsSource="{Binding SimResultList}"
-                     CanUserAddRows="False"
-                     AutoGenerateColumns="False"
-                    VerticalGridLinesBrush="Silver"
-                    HorizontalGridLinesBrush="Silver"
-                    AlternatingRowBackground="#FCFCFC"
-                    BorderBrush="Silver" 
-                    BorderThickness="1" 
-                    Background="White" 
-                    HorizontalScrollBarVisibility="Auto"
-                    VerticalScrollBarVisibility="Auto"
-                    VirtualizingStackPanel.VirtualizationMode="Recycling"
-                    VerticalContentAlignment="Center" > 
-                <DataGrid.Resources>
-                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFE9B5" />
-                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="#015874" />
-                </DataGrid.Resources>
-
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Cummulative Frequency"
-                                        Width="*"
-                                    Binding="{Binding CumulativeFrequency}" />
-
-                    <DataGridTextColumn Header="Relative Frequency"
-                                         Width="*"
-                                        Binding="{Binding RelativeFrequency}" />
-
-                    <DataGridTextColumn Header="Expectation"
-                                         Width="*"
-                                        Binding="{Binding Expectation}"/>
-
-                </DataGrid.Columns>
-            </DataGrid>
+            <Grid Grid.Row="2" Margin="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <con:TableResult Grid.ColumnSpan="2" 
+                                 Visibility="{Binding IsTableView,
+                                 Converter={StaticResource bool2Visibility}}"/>
+                <con:RelativeChart Grid.Column="0" Visibility="{Binding IsChartView,
+                                 Converter={StaticResource bool2Visibility}}"/>
+                <con:ExpectationChart Grid.Column="1" Visibility="{Binding IsChartView,
+                                 Converter={StaticResource bool2Visibility}}"/>
+            </Grid>
         </Grid>
     </Border>
 </Window>

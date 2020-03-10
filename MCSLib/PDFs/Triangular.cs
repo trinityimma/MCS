@@ -86,38 +86,44 @@ namespace MCSLib.PDFs
 
             for (int i = 0; i < iteration; i++)
             {
-                var randomness = rand.NextDouble();
-                if (randomness <= fc)
+                if (rand.NextDouble() <= fc)
                 {
-                    double ans = minValue + Math.Sqrt((randomness * (modeValue - minValue) * (maxValue - minValue)));
+                    double ans = minValue + Math.Sqrt((rand.NextDouble() * (modeValue - minValue) * (maxValue - minValue)));
                     results.Add(ans);
                 }
                 else
                 {
-                    double ans = modeValue - Math.Sqrt((1 - randomness * (modeValue - minValue) * (modeValue - maxValue)));
+                    double ans = modeValue - Math.Sqrt((1 - rand.NextDouble() * (modeValue - minValue) * (modeValue - maxValue)));
                     results.Add(ans);
                 }
             }
             return results;
         }
        
-        private IList<double> GetTriangularDistribution(Func<double, double> action, int iteration, double minValue, double maxValue, double modeValue)
+        private IList<double> GetTriangularDistribution(Func<double,double> action, int iteration, double minValue, double maxValue, double modeValue)
         {
             Random rand = new Random();
             var results = new List<double>();
             double fc = (maxValue - minValue) / (modeValue - minValue);
             for (int i = 0; i < iteration; i++)
             {
-                var randomness = rand.NextDouble();
-                if (randomness <= fc)
+                if (rand.NextDouble() <= fc)
                 {
-                    double ans = minValue + Math.Sqrt((randomness * (modeValue - minValue) * (maxValue - minValue)));
-                    results.Add(action(ans));
+                    double a = minValue + Math.Sqrt((rand.NextDouble() * (modeValue - minValue) * (maxValue - minValue)));
+                    double b = minValue + Math.Sqrt((rand.NextDouble() * (modeValue - minValue) * (maxValue - minValue)));
+                    double c = minValue + Math.Sqrt((rand.NextDouble() * (modeValue - minValue) * (maxValue - minValue)));
+                    double d = minValue + Math.Sqrt((rand.NextDouble() * (modeValue - minValue) * (maxValue - minValue)));
+                    double fit = ((7758 * 96.83 * a * b * (100 - c)) / (d));
+                    results.Add(action(fit));
                 }
                 else
                 {
-                    double ans = modeValue - Math.Sqrt((1 - randomness * (modeValue - minValue) * (modeValue - maxValue)));
-                    results.Add(action(ans));
+                    double a = modeValue - Math.Sqrt((1 - rand.NextDouble() * (modeValue - minValue) * (modeValue - maxValue)));
+                    double b = modeValue - Math.Sqrt((1 - rand.NextDouble() * (modeValue - minValue) * (modeValue - maxValue)));
+                    double c = modeValue - Math.Sqrt((1 - rand.NextDouble() * (modeValue - minValue) * (modeValue - maxValue)));
+                    double d = modeValue - Math.Sqrt((1 - rand.NextDouble() * (modeValue - minValue) * (modeValue - maxValue)));
+                    double fit = ((7758 * 96.83 * a * b * (100 - c)) / (d));
+                    results.Add(action(fit));
                 }
             }
             return results;

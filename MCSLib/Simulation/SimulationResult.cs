@@ -11,6 +11,11 @@
         /// </summary>
         public double RelativeFrequency { get; set; }
         /// <summary>
+        /// Returns the Bin Size 
+        /// calculated from the simulated results
+        /// </summary>
+        public double BinSize { get; set; }
+        /// <summary>
         /// Returns the cumulative frequency 
         /// calculated from the simulated results
         /// </summary>

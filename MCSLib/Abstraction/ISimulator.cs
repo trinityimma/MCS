@@ -12,6 +12,10 @@ namespace MCSLib.Abstraction
         /// <summary>
         /// Returns simulation results based on Monte Carlo method
         /// </summary>
+        IList<double> SimulatedValues { get; set; }
+        /// <summary>
+        /// Returns CDP and PDF based on Monte Carlo method
+        /// </summary>
         IList<SimulationResult> SimulationResults { get; set; }
         /// <summary>
         /// Returns simulation results based on Monte Carlo method

@@ -1,4 +1,5 @@
 ﻿using MCSLib.Simulation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -14,6 +15,15 @@ namespace MCSLib
             for (int i = 0; i < statisticalInput.Interval; i++)
                 result.Add(cumfrequencies[i] - reletivefrequencies[i]);
             return result;
+        }
+
+        internal static double GoodnessOfFitTest(Func<double> @delegate)
+        {
+            double a = @delegate();
+            double b = @delegate();
+            double c = @delegate();
+            double d = @delegate();
+            return  ((7758*96.83 * a * b * (100 - c)) / (d));
         }
         internal static IList<double> GetCumFrequency(StatisticalInput statisticalInput, IList<double> simulatedValues)
         {
@@ -38,7 +48,9 @@ namespace MCSLib
             return result;
         }
 
-        private static IList<double> GetBinSize(double maxValue, double minValue, int interval)
+
+
+        public static IList<double> GetBinSizes(double maxValue, double minValue, int interval)
         {
             double step = (maxValue - minValue) / interval;
             var ans = new List<double>();
@@ -50,12 +62,12 @@ namespace MCSLib
             }
             return ans;
         }
-
+        
         private static IList<double> GetFrequency(StatisticalInput statisticalInput,IList<double> simulatedValues)
         {
             double lowerBound = -1;
             double upperBound = 0;
-            IList<double> binSizes = GetBinSize(statisticalInput.MaxValue, statisticalInput.MinValue, statisticalInput.Interval);
+            IList<double> binSizes = GetBinSizes(statisticalInput.MaxValue, statisticalInput.MinValue, statisticalInput.Interval);
             List<double> result = new List<double>();
             int dataNum = statisticalInput.Iteration - statisticalInput.Interval;
 
