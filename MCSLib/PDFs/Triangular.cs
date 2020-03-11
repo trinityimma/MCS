@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MCSLib.Abstraction;
+using System;
 using System.Collections.Generic;
 
 namespace MCSLib.PDFs
@@ -16,7 +17,7 @@ namespace MCSLib.PDFs
         /// values are added in the order; minValue, maxValue, modeValue, 
         /// averageValue and standardDeviationValue in that order.</param>
         /// <returns>IEnumerable of simulated values</returns>
-        public override IList<double> GetDistribution(int iteration, params double[] uncertainties)
+        public override ISimulationResult GetDistribution(int iteration, params double[] uncertainties)
         {
             return ValidateInput(iteration, uncertainties);
         }
@@ -28,7 +29,7 @@ namespace MCSLib.PDFs
         /// values are added in the order; minValue, maxValue, modeValue, 
         /// averageValue and standardDeviationValue in that order.</param>
         /// <returns>IEnumerable of simulated values</returns>
-        public override IList<double> GetDistribution(int iteration, List<double> uncertainties)
+        public override ISimulationResult GetDistribution(int iteration, List<double> uncertainties)
         {
             return ValidateInput(iteration, uncertainties.ToArray());
         }
@@ -36,7 +37,7 @@ namespace MCSLib.PDFs
         ///  <param name="args">represent probability distribution
         ///  input parameters for simulation</param>
         /// </summary>
-        public override IList<double> GetDistribution(Params args)
+        public override ISimulationResult GetDistribution(Params args)
         {
             return ValidateInput(args.Iteration, args.Uncertainties);
         }
@@ -49,7 +50,7 @@ namespace MCSLib.PDFs
         /// values are added in the order; minValue, maxValue, modeValue, 
         /// averageValue and standardDeviationValue in that order.</param>
         /// <returns>IEnumerable of simulated values</returns>
-        public override IList<double> GetDistribution(Func<double, double> action, int iteration, params double[] args)
+        public override ISimulationResult GetDistribution(Func<double, double> action, int iteration, params double[] args)
         {
             return ValidateInputWithDelegate(action, iteration, args);
         }
@@ -62,7 +63,7 @@ namespace MCSLib.PDFs
         /// values are added in the order; minValue, maxValue, modeValue, 
         /// averageValue and standardDeviationValue in that order.</param>
         /// <returns>IEnumerable of simulated values</returns>
-        public override IList<double> GetDistribution(Func<double, double> action, int iteration, List<double> args)
+        public override ISimulationResult GetDistribution(Func<double, double> action, int iteration, List<double> args)
         {
             return ValidateInputWithDelegate(action, iteration, args.ToArray());
         }
@@ -73,14 +74,16 @@ namespace MCSLib.PDFs
         /// <param name = "args" > represent probability distribution
         ///  input parameters for simulation</param>
         /// <returns>IEnumerable of simulated values</returns>
-        public override IList<double> GetDistribution(Func<double, double> action, Params args)
+        public override ISimulationResult GetDistribution(Func<double, double> action, Params args)
         {
             return ValidateInputWithDelegate(action, args.Iteration, args.Uncertainties);
         }
 
-        private IList<double> GetTriangularDistribution(int iteration, double minValue, double maxValue, double modeValue)
+        private ISimulationResult GetTriangularDistribution(int iteration, double minValue, double maxValue, double modeValue)
         {
             Random rand = new Random();
+            _result.SimulatedValues.Clear();
+            _result.FittedValues.Clear();
             double fc = (maxValue - minValue) / (modeValue - minValue);
             var results = new List<double>();
 
@@ -88,22 +91,33 @@ namespace MCSLib.PDFs
             {
                 if (rand.NextDouble() <= fc)
                 {
-                    double ans = minValue + Math.Sqrt((rand.NextDouble() * (modeValue - minValue) * (maxValue - minValue)));
-                    results.Add(ans);
+                    double a = minValue + Math.Sqrt((rand.NextDouble() * (modeValue - minValue) * (maxValue - minValue)));
+                    double b = minValue + Math.Sqrt((rand.NextDouble() * (modeValue - minValue) * (maxValue - minValue)));
+                    double c = minValue + Math.Sqrt((rand.NextDouble() * (modeValue - minValue) * (maxValue - minValue)));
+                    double d = minValue + Math.Sqrt((rand.NextDouble() * (modeValue - minValue) * (maxValue - minValue)));
+                    double fit = ((751207.14 * a * b * (100 - c)) / (d));
+                    _result.SimulatedValues.Add(a);
+                    _result.FittedValues.Add(fit);
                 }
                 else
                 {
-                    double ans = modeValue - Math.Sqrt((1 - rand.NextDouble() * (modeValue - minValue) * (modeValue - maxValue)));
-                    results.Add(ans);
+                    double a = modeValue - Math.Sqrt((1 - rand.NextDouble() * (modeValue - minValue) * (modeValue - maxValue)));
+                    double b = modeValue - Math.Sqrt((1 - rand.NextDouble() * (modeValue - minValue) * (modeValue - maxValue)));
+                    double c = modeValue - Math.Sqrt((1 - rand.NextDouble() * (modeValue - minValue) * (modeValue - maxValue)));
+                    double d = modeValue - Math.Sqrt((1 - rand.NextDouble() * (modeValue - minValue) * (modeValue - maxValue)));
+                    double fit = ((751207.14 * a * b * (100 - c)) / (d));
+                    _result.SimulatedValues.Add(a);
+                    _result.FittedValues.Add(fit);
                 }
             }
-            return results;
+            return _result;
         }
        
-        private IList<double> GetTriangularDistribution(Func<double,double> action, int iteration, double minValue, double maxValue, double modeValue)
+        private ISimulationResult GetTriangularDistribution(Func<double,double> action, int iteration, double minValue, double maxValue, double modeValue)
         {
             Random rand = new Random();
-            var results = new List<double>();
+            _result.SimulatedValues.Clear();
+            _result.FittedValues.Clear();
             double fc = (maxValue - minValue) / (modeValue - minValue);
             for (int i = 0; i < iteration; i++)
             {
@@ -114,7 +128,8 @@ namespace MCSLib.PDFs
                     double c = minValue + Math.Sqrt((rand.NextDouble() * (modeValue - minValue) * (maxValue - minValue)));
                     double d = minValue + Math.Sqrt((rand.NextDouble() * (modeValue - minValue) * (maxValue - minValue)));
                     double fit = ((751207.14 * a * b * (100 - c)) / (d));
-                    results.Add(action(fit));
+                    _result.SimulatedValues.Add(action(a));
+                    _result.FittedValues.Add(action(fit));
                 }
                 else
                 {
@@ -123,19 +138,20 @@ namespace MCSLib.PDFs
                     double c = modeValue - Math.Sqrt((1 - rand.NextDouble() * (modeValue - minValue) * (modeValue - maxValue)));
                     double d = modeValue - Math.Sqrt((1 - rand.NextDouble() * (modeValue - minValue) * (modeValue - maxValue)));
                     double fit = ((751207.14 * a * b * (100 - c)) / (d));
-                    results.Add(action(fit));
+                    _result.SimulatedValues.Add(action(a));
+                    _result.FittedValues.Add(action(fit));
                 }
             }
-            return results;
+            return _result;
         }
 
-        private IList<double> ValidateInput(int iteration, double[] uncertainties)
+        private ISimulationResult ValidateInput(int iteration, double[] uncertainties)
         {
             if (uncertainties.Length != 3)
                 throw new ArgumentOutOfRangeException("uncertainties", "uncertainties for triangular distribution must have three values, min, mode and max values");
             return GetTriangularDistribution(iteration, uncertainties[0], uncertainties[1], uncertainties[2]);
         }
-        private IList<double> ValidateInputWithDelegate(Func<double, double> action, int iteration, double[] uncertainties)
+        private ISimulationResult ValidateInputWithDelegate(Func<double, double> action, int iteration, double[] uncertainties)
         {
             if (uncertainties.Length != 3)
                 throw new ArgumentOutOfRangeException("uncertainties", "uncertainties for triangular distribution must have three values, min, mode and max values");

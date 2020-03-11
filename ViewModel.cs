@@ -1,7 +1,7 @@
-﻿using MCSLib.Abstraction;
+﻿using LiveCharts;
+using MCSLib.Abstraction;
 using MCSLib.PDFs;
 using MCSLib.Simulation;
-using OxyPlot;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -28,7 +28,7 @@ namespace MCS
             IsModeEnabled = false;
             IsAvgEnabled = false;
             IsStDevEnabled = false;
-            SimResultList = new List<SimulationResult>();
+            SimResultList = new List<StatisticalResult>();
             RunMCSCommand = new Command(RumMCSAction, (x)=>true);
             ChartCommand = new Command(ViewPlotAction, (x) => SimResultList.Count > 0);
             _distributionInput = new DistributionInput();
@@ -39,23 +39,33 @@ namespace MCS
         {
             IsTableView = false;
             IsChartView = true;
-            RelativePlot = new ObservableCollection<RelItem>();
-            ExpectationPlot = new ObservableCollection<DataPoint>();
-            RelativeLine = new ObservableCollection<DataPoint>();
+            ColumnValues = new ChartValues<double>();
+            LineValues = new ChartValues<double>();
+            Labels = new string[SimResultList.Count];
             for (int i = 0; i < SimResultList.Count; i++)
             {
-                RelativePlot.Add(new RelItem { RelValue=SimResultList[i].RelativeFrequency,Label= _simulatedValues[i] });
-                ExpectationPlot.Add(new DataPoint(SimResultList[i].BinSize, SimResultList[i].Expectation));
-                RelativeLine.Add(new DataPoint(SimResultList[i].BinSize, SimResultList[i].RelativeFrequency));
-                AbsoluteMaximum = RelativePlot.Count;
+                ColumnValues.Add(SimResultList[i].RelativeFrequency);
+                Labels[i] = _simulatedValues[i].ToString();
+                LineValues.Add(SimResultList[i].RelativeFrequency);
             }
+            //RelativePlot = new ObservableCollection<RelItem>();
+            //ExpectationPlot = new ObservableCollection<DataPoint>();
+            //RelativeLine = new ObservableCollection<DataPoint>();
+            //for (int i = 0; i < SimResultList.Count; i++)
+            //{
+            //    RelativePlot.Add(new RelItem { RelValue=SimResultList[i].RelativeFrequency,Label= _simulatedValues[i] });
+            //    ExpectationPlot.Add(new DataPoint(SimResultList[i].BinSize, SimResultList[i].Expectation));
+            //    RelativeLine.Add(new DataPoint(SimResultList[i].BinSize, SimResultList[i].RelativeFrequency));
+            //    AbsoluteMaximum = RelativePlot.Count;
+            //}
+            Formatter = value => value.ToString();
         }
 
         private void RumMCSAction(object obj)
         {
             IsTableView = true;
             IsChartView = false;
-            if (Iteration> 0)
+            if (Iteration > 0)
             {
                 _distributionInput.Delegate = GetSimResult;
                 _distributionInput.Iteration = Iteration;
@@ -78,7 +88,7 @@ namespace MCS
 
 
                 SimResultList = _simulator.Run(_distributionInput, SelectedDistribution);
-                _simulatedValues = _simulator.SimulatedValues;
+                _simulatedValues = _simulator.SimulationResult.SimulatedValues;
             }
         }
 
@@ -228,36 +238,36 @@ namespace MCS
             get { return standardDeviation; }
             set { standardDeviation = value; RaisePropertyChanged(); }
         }
-        private IList<SimulationResult> simulationResults;
+        private IList<StatisticalResult> simulationResults;
 
-        public IList<SimulationResult> SimResultList
+        public IList<StatisticalResult> SimResultList
         {
             get { return simulationResults; }
             set { simulationResults = value; RaisePropertyChanged(); }
         }
-        private ObservableCollection<RelItem> relativePlot;
+        private ObservableCollection<ColumnItem> relativePlot;
 
-        public ObservableCollection<RelItem> RelativePlot
+        public ObservableCollection<ColumnItem> RelativePlot
         {
             get { return relativePlot; }
             set { relativePlot = value; RaisePropertyChanged(); }
         }
 
-        private ObservableCollection<DataPoint> expectationPlot;
+        //private ObservableCollection<DataPoint> expectationPlot;
 
-        public ObservableCollection<DataPoint> ExpectationPlot
-        {
-            get { return expectationPlot; }
-            set { expectationPlot = value; RaisePropertyChanged(); }
-        }
+        //public ObservableCollection<DataPoint> ExpectationPlot
+        //{
+        //    get { return expectationPlot; }
+        //    set { expectationPlot = value; RaisePropertyChanged(); }
+        //}
 
-        private ObservableCollection<DataPoint> relLine;
+        //private ObservableCollection<DataPoint> relLine;
 
-        public ObservableCollection<DataPoint> RelativeLine
-        {
-            get { return relLine; }
-            set { relLine = value; RaisePropertyChanged(); }
-        }
+        //public ObservableCollection<DataPoint> RelativeLine
+        //{
+        //    get { return relLine; }
+        //    set { relLine = value; RaisePropertyChanged(); }
+        //}
 
         private bool isChartView;
 
@@ -292,11 +302,80 @@ namespace MCS
         private DistributionInput _distributionInput;
         private IList<double> _simulatedValues;
         private ISimulator _simulator;
+
+
+        //LiveChart
+        private SeriesCollection sc;
+
+        public SeriesCollection SeriesCollection
+        {
+            get { return sc; }
+            set { sc = value; RaisePropertyChanged(); }
+        }
+
+        private string[] lables;
+
+        public string[] Labels
+        {
+            get { return lables; }
+            set { lables = value; RaisePropertyChanged(); }
+        }
+
+        private Func<double, string> formater;
+
+        public Func<double, string> Formatter
+        {
+            get { return formater; }
+            set { formater = value; RaisePropertyChanged(); }
+        }
+        private ChartValues<double> lineValues;
+
+        public ChartValues<double> LineValues
+        {
+            get { return lineValues; }
+            set { lineValues = value; RaisePropertyChanged(); }
+        }
+        private ChartValues<double> columnvalues;
+
+        public ChartValues<double> ColumnValues
+        {
+            get { return columnvalues; }
+            set { columnvalues = value; RaisePropertyChanged(); }
+        }
+
+        private void Plotter()
+        {
+            ColumnValues = new ChartValues<double>();
+            LineValues = new ChartValues<double>();
+             Labels = new string[SimResultList.Count];
+            for (int i = 0; i < SimResultList.Count; i++)
+            {
+                ColumnValues.Add(SimResultList[i].RelativeFrequency);
+                Labels[i] = _simulatedValues[i].ToString();
+                LineValues.Add(SimResultList[i].RelativeFrequency);
+            }
+            //SeriesCollection = new SeriesCollection
+            //{
+            //    new ColumnSeries
+            //    {
+            //        Title = "Histogram",
+            //        Values = values
+            //    },
+            //    new LineSeries
+            //    {
+            //        Title = "PDF",
+            //        Values = LineValues,
+            //    }
+            //};
+
+           
+            Formatter = value => value.ToString();
+        }
     }
 
-    public class RelItem
+    public class ColumnItem
     {
-        public double RelValue { get; set; }
-        public double Label { get; set; }
+        public double YValue { get; set; }
+        public double XValue { get; set; }
     }
 }

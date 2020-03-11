@@ -33,3 +33,5 @@ C:\Users\john.ansa\Desktop\2020\private\New folder\MCS\bin\Debug\LiveCharts.pdb
 C:\Users\john.ansa\Desktop\2020\private\New folder\MCS\bin\Debug\LiveCharts.xml
 C:\Users\john.ansa\Desktop\2020\private\New folder\MCS\bin\Debug\LiveCharts.Wpf.pdb
 C:\Users\john.ansa\Desktop\2020\private\New folder\MCS\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\john.ansa\Desktop\2020\private\New folder\MCS\obj\Debug\Controls\RelativeLiveChart.baml
+C:\Users\john.ansa\Desktop\2020\private\New folder\MCS\obj\Debug\Controls\RelativeLiveChart.g.cs

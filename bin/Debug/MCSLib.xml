@@ -66,14 +66,29 @@
              input parameters for simulation</param>
             <returns>IEnumerable of simulated values</returns>
         </member>
+        <member name="T:MCSLib.Abstraction.ISimulationResult">
+            <summary>
+            Represents actual and fitted simulation results based on Monte Carlo method
+            </summary>
+        </member>
+        <member name="P:MCSLib.Abstraction.ISimulationResult.SimulatedValues">
+            <summary>
+            Returns simulation results based on Monte Carlo method
+            </summary>
+        </member>
+        <member name="P:MCSLib.Abstraction.ISimulationResult.FittedValues">
+            <summary>
+            Returns fitted simulation results based on Monte Carlo method
+            </summary>
+        </member>
         <member name="T:MCSLib.Abstraction.ISimulator">
             <summary>
             A simulator interface for running Monte Carlo simulation
             </summary>
         </member>
-        <member name="P:MCSLib.Abstraction.ISimulator.SimulatedValues">
+        <member name="P:MCSLib.Abstraction.ISimulator.SimulationResult">
             <summary>
-            Returns simulation results based on Monte Carlo method
+            Represents actual and fitted simulation results based on Monte Carlo method
             </summary>
         </member>
         <member name="P:MCSLib.Abstraction.ISimulator.SimulationResults">
@@ -236,6 +251,11 @@
             Base class for probability distribution
             </summary>
         </member>
+        <member name="M:MCSLib.PDF.#ctor">
+            <summary>
+            ctr
+            </summary>
+        </member>
         <member name="M:MCSLib.PDF.GetDistribution(System.Int32,System.Double[])">
             <summary>
             Get simulated probability distribution
@@ -293,6 +313,11 @@
              input parameters for simulation</param>
             <returns>IEnumerable of simulated values</returns>
         </member>
+        <member name="F:MCSLib.PDF._result">
+            <summary>
+            SimulationResult protected member
+            </summary>
+        </member>
         <member name="T:MCSLib.Simulation.DistributionInput">
             <summary>
             Represents user defined variables for 
@@ -337,28 +362,48 @@
         </member>
         <member name="T:MCSLib.Simulation.SimulationResult">
             <summary>
+            Represents actual and fitted simulation results based on Monte Carlo method
+            </summary>
+        </member>
+        <member name="M:MCSLib.Simulation.SimulationResult.#ctor">
+            <summary>
+            ctor
+            </summary>
+        </member>
+        <member name="P:MCSLib.Simulation.SimulationResult.SimulatedValues">
+            <summary>
+            Returns simulation results based on Monte Carlo method
+            </summary>
+        </member>
+        <member name="P:MCSLib.Simulation.SimulationResult.FittedValues">
+            <summary>
+            Returns fitted simulation results based on Monte Carlo method
+            </summary>
+        </member>
+        <member name="T:MCSLib.Simulation.StatisticalResult">
+            <summary>
             Represents simulated results
             </summary>
         </member>
-        <member name="P:MCSLib.Simulation.SimulationResult.RelativeFrequency">
+        <member name="P:MCSLib.Simulation.StatisticalResult.RelativeFrequency">
             <summary>
             Returns the relative frequency 
             calculated from the simulated results
             </summary>
         </member>
-        <member name="P:MCSLib.Simulation.SimulationResult.BinSize">
+        <member name="P:MCSLib.Simulation.StatisticalResult.BinSize">
             <summary>
             Returns the Bin Size 
             calculated from the simulated results
             </summary>
         </member>
-        <member name="P:MCSLib.Simulation.SimulationResult.CumulativeFrequency">
+        <member name="P:MCSLib.Simulation.StatisticalResult.CumulativeFrequency">
             <summary>
             Returns the cumulative frequency 
             calculated from the simulated results
             </summary>
         </member>
-        <member name="P:MCSLib.Simulation.SimulationResult.Expectation">
+        <member name="P:MCSLib.Simulation.StatisticalResult.Expectation">
             <summary>
             Returns the probability of uncertainties 
             calculated from the simulated results
@@ -400,9 +445,9 @@
             Returns simulation results based on Monte Carlo method
             </summary>
         </member>
-        <member name="P:MCSLib.Simulation.Simulator.SimulatedValues">
+        <member name="P:MCSLib.Simulation.Simulator.SimulationResult">
             <summary>
-            Returns simulation results based on Monte Carlo method
+            Represents actual and fitted simulation results based on Monte Carlo method
             </summary>
         </member>
     </members>

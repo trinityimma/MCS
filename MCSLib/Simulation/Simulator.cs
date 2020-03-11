@@ -15,14 +15,14 @@ namespace MCSLib.Simulation
         /// <summary>
         /// Returns simulation results based on Monte Carlo method
         /// </summary>
-        public IList<SimulationResult> Run()
+        public IList<StatisticalResult> Run()
         {
-            SimulatedValues = ToggleDistribution(_distributionInput, _distributionType);
+            SimulationResult = ToggleDistribution(_distributionInput, _distributionType);
             _statisticalInput.Interval = _distributionInput.Interval;
             _statisticalInput.Iteration = _distributionInput.Iteration;
-            _statisticalInput.MinValue = SimulatedValues.Min();
-            _statisticalInput.MaxValue = SimulatedValues.Max();
-            return GetSimResult(_statisticalInput, SimulatedValues);
+            _statisticalInput.MinValue = SimulationResult.FittedValues.Min();
+            _statisticalInput.MaxValue = SimulationResult.FittedValues.Max();
+            return GetSimResult(_statisticalInput, SimulationResult.FittedValues);
         }
         /// <summary>
         /// Returns simulation results based on Monte Carlo method
@@ -30,18 +30,18 @@ namespace MCSLib.Simulation
         /// <param name="distributionInput">Represents user defined variables for 
         /// probability distribution and simulation results</param>
         /// <param name="distributionType">Represents selected probability distribution</param>
-        public IList<SimulationResult> Run(DistributionInput distributionInput,DistributionType distributionType)
+        public IList<StatisticalResult> Run(DistributionInput distributionInput,DistributionType distributionType)
         {
-            SimulatedValues = ToggleDistribution(distributionInput,distributionType);
-            if (SimulatedValues.Count > 0)
+            SimulationResult = ToggleDistribution(distributionInput,distributionType);
+            if (SimulationResult.FittedValues.Count > 0)
             {
                 if (_statisticalInput == null)
                     _statisticalInput = new StatisticalInput();
                 _statisticalInput.Interval = distributionInput.Interval;
                 _statisticalInput.Iteration = distributionInput.Iteration;
-                _statisticalInput.MinValue = SimulatedValues.Min();
-                _statisticalInput.MaxValue = SimulatedValues.Max();
-                return GetSimResult(_statisticalInput, SimulatedValues);
+                _statisticalInput.MinValue = SimulationResult.FittedValues.Min();
+                _statisticalInput.MaxValue = SimulationResult.FittedValues.Max();
+                return GetSimResult(_statisticalInput, SimulationResult.FittedValues);
             }
              throw new ArgumentException();
         }
@@ -65,16 +65,16 @@ namespace MCSLib.Simulation
 
         }
 
-        private IList<SimulationResult> GetSimResult(StatisticalInput statisticalInput, IList<double> distribution)
+        private IList<StatisticalResult> GetSimResult(StatisticalInput statisticalInput, IList<double> distribution)
         {
-            SimulationResults = new List<SimulationResult>();
+            SimulationResults = new List<StatisticalResult>();
             var relFrequencies = MathUtils.GetRelFrequency(statisticalInput, distribution);
             var cumFrequencies = MathUtils.GetCumFrequency(statisticalInput, distribution);
             var expectations = MathUtils.GetExpectation(statisticalInput, distribution);
             var binSizes = MathUtils.GetBinSizes(statisticalInput.MaxValue, statisticalInput.MinValue, statisticalInput.Interval);
             for (int i = 0; i < _statisticalInput.Interval; i++)
             {
-                SimulationResults.Add(new SimulationResult()
+                SimulationResults.Add(new StatisticalResult()
                 {
                     Expectation = expectations[i],
                     RelativeFrequency = relFrequencies[i],
@@ -85,9 +85,9 @@ namespace MCSLib.Simulation
             }
             return SimulationResults;
         }
-        private IList<double> ToggleDistribution(DistributionInput distributionInput, DistributionType distributionType)
+        private ISimulationResult ToggleDistribution(DistributionInput distributionInput, DistributionType distributionType)
         {
-            IList<double> distributions=new List<double>();
+            ISimulationResult distributions =null;
             switch (distributionType)
             {
                 case DistributionType.Uniform:
@@ -109,11 +109,12 @@ namespace MCSLib.Simulation
         /// <summary>
         /// Returns simulation results based on Monte Carlo method
         /// </summary>
-        public IList<SimulationResult> SimulationResults { get; set; }
+        public IList<StatisticalResult> SimulationResults { get; set; }
         /// <summary>
-        /// Returns simulation results based on Monte Carlo method
+        /// Represents actual and fitted simulation results based on Monte Carlo method
         /// </summary>
-        public IList<double> SimulatedValues { get; set; }
+        public ISimulationResult SimulationResult { get; set; }
+
         private DistributionInput _distributionInput;
         private StatisticalInput _statisticalInput;
         private DistributionType _distributionType;

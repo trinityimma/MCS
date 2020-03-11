@@ -10,23 +10,24 @@ namespace MCSLib.Abstraction
     public interface ISimulator
     {
         /// <summary>
-        /// Returns simulation results based on Monte Carlo method
+        /// Represents actual and fitted simulation results based on Monte Carlo method
         /// </summary>
-        IList<double> SimulatedValues { get; set; }
+        ISimulationResult SimulationResult { get; set; }
+
         /// <summary>
         /// Returns CDP and PDF based on Monte Carlo method
         /// </summary>
-        IList<SimulationResult> SimulationResults { get; set; }
+        IList<StatisticalResult> SimulationResults { get; set; }
         /// <summary>
         /// Returns simulation results based on Monte Carlo method
         /// </summary>
-        IList<SimulationResult> Run();
+        IList<StatisticalResult> Run();
         /// <summary>
         /// Returns simulation results based on Monte Carlo method
         /// </summary>
         /// <param name="distributionInput">Represents user defined variables for 
         /// probability distribution and simulation results</param>
         /// <param name="distributionType">Represents selected probability distribution</param>
-        IList<SimulationResult> Run(DistributionInput distributionInput, DistributionType distributionType);
+        IList<StatisticalResult> Run(DistributionInput distributionInput, DistributionType distributionType);
     }
 }

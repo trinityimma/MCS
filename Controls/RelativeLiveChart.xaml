@@ -1,0 +1,34 @@
+﻿<lvc:CartesianChart x:Class="MCS.Controls.RelativeLiveChart"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" LegendLocation="Right">
+    <lvc:CartesianChart.Series>
+            <lvc:LineSeries Values="{Binding LineValues}" 
+                            Title="PDF"
+                            StrokeThickness="3" 
+                       Stroke="#f34336" Fill="Transparent" LineSmoothness="1" 
+                       PointGeometrySize="11" PointGeometry="{x:Static lvc:DefaultGeometries.Circle}"
+                            PointForeground="White" />
+            <lvc:ColumnSeries Values="{Binding ColumnValues}" 
+                            Title="Histogram"
+                              Fill="#0088ff"
+                             />
+        </lvc:CartesianChart.Series>
+        <lvc:CartesianChart.AxisX>
+                <lvc:Axis Title="Design Load [psi]" 
+                          Labels="{Binding Labels}"
+                          Foreground="Black">
+                <lvc:Axis.Separator >
+                    <lvc:Separator StrokeThickness="1" Stroke="Black"  Step="50"/>
+                </lvc:Axis.Separator>
+            </lvc:Axis>
+                
+            </lvc:CartesianChart.AxisX>
+    <lvc:CartesianChart.AxisY>
+        <lvc:Axis Title="Relative Frequency [fraction]" LabelFormatter="{Binding Formatter}"></lvc:Axis>
+    </lvc:CartesianChart.AxisY>
+</lvc:CartesianChart>

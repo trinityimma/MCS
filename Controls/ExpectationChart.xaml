@@ -6,10 +6,16 @@
               xmlns:oxy="http://oxyplot.org/wpf"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-          LegendPlacement="Outside" 
+          LegendPlacement="Inside" 
           Subtitle="(Cumulative Distribution Function)" 
-          LegendPosition="RightMiddle" 
-          Title="Expectation"  >
+          LegendPosition="RightTop" 
+          Title="Expectation"  
+          HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch"
+        LegendBorder="Black"
+        LegendBorderThickness="1"
+        LegendBackground="LightGray"
+        Background="Azure">
     <oxy:Plot.Axes>
         <oxy:LinearAxis Title="Design Load [psi]" 
                     Position="Bottom" 

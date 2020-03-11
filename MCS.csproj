@@ -74,6 +74,9 @@
     <Compile Include="Controls\RelativeChart.xaml.cs">
       <DependentUpon>RelativeChart.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\RelativeLiveChart.xaml.cs">
+      <DependentUpon>RelativeLiveChart.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TableResult.xaml.cs">
       <DependentUpon>TableResult.xaml</DependentUpon>
     </Compile>
@@ -85,6 +88,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\RelativeChart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\RelativeLiveChart.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

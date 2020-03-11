@@ -17,7 +17,7 @@ namespace MCSLib.Abstraction
         /// values are added in the order; minValue, maxValue, modeValue, 
         /// averageValue and standardDeviationValue in that order.</param>
         /// <returns>IEnumerable of simulated values</returns>
-        IList<double> GetDistribution(int iteration, params double[] uncertainties);
+        ISimulationResult GetDistribution(int iteration, params double[] uncertainties);
         /// <summary>
         /// Get simulated probability distribution
         /// </summary>
@@ -26,12 +26,12 @@ namespace MCSLib.Abstraction
         /// values are added in the order; minValue, maxValue, modeValue, 
         /// averageValue and standardDeviationValue in that order.</param>
         /// <returns>IEnumerable of simulated values</returns>
-        IList<double> GetDistribution(int iteration, List<double> uncertainties);
+        ISimulationResult GetDistribution(int iteration, List<double> uncertainties);
         /// <summary>
         ///  <param name="args">represent probability distribution
         ///  input parameters for simulation</param>
         /// </summary>
-        IList<double> GetDistribution(Params args);
+        ISimulationResult GetDistribution(Params args);
         /// <summary>
         /// Get simulated probability distribution
         /// </summary>
@@ -41,7 +41,7 @@ namespace MCSLib.Abstraction
         /// values are added in the order; minValue, maxValue, modeValue, 
         /// averageValue and standardDeviationValue in that order.</param>
         /// <returns>IEnumerable of simulated values</returns>
-        IList<double> GetDistribution(Func<double, double> action, int iteration, params double[] uncertainties);
+        ISimulationResult GetDistribution(Func<double, double> action, int iteration, params double[] uncertainties);
         /// <summary>
         /// Get simulated probability distribution
         /// </summary>
@@ -51,7 +51,7 @@ namespace MCSLib.Abstraction
         /// values are added in the order; minValue, maxValue, modeValue, 
         /// averageValue and standardDeviationValue in that order.</param>
         /// <returns>IEnumerable of simulated values</returns>
-        IList<double> GetDistribution(Func<double, double> action, int iteration, List<double> uncertainties);
+        ISimulationResult GetDistribution(Func<double, double> action, int iteration, List<double> uncertainties);
         /// <summary>
         /// Get simulated probability distribution
         /// </summary>
@@ -59,6 +59,6 @@ namespace MCSLib.Abstraction
         /// <param name = "args" > represent probability distribution
         ///  input parameters for simulation</param>
         /// <returns>IEnumerable of simulated values</returns>
-        IList<double> GetDistribution(Func<double, double> action, Params args);
+        ISimulationResult GetDistribution(Func<double, double> action, Params args);
     }
 }

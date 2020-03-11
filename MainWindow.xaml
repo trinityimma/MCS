@@ -118,7 +118,7 @@
                 <con:TableResult Grid.ColumnSpan="2" 
                                  Visibility="{Binding IsTableView,
                                  Converter={StaticResource bool2Visibility}}"/>
-                <con:RelativeChart Grid.Column="0" Visibility="{Binding IsChartView,
+                <con:RelativeLiveChart Grid.Column="0" Visibility="{Binding IsChartView,
                                  Converter={StaticResource bool2Visibility}}"/>
                 <con:ExpectationChart Grid.Column="1" Visibility="{Binding IsChartView,
                                  Converter={StaticResource bool2Visibility}}"/>

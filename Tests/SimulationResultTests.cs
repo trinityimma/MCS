@@ -10,7 +10,7 @@ namespace Tests
         [SetUp]
         public void SetUpMockObjects()
         {
-            _mockSimResult = new SimulationResult();
+            _mockSimResult = new StatisticalResult();
         }
         
 
@@ -49,6 +49,6 @@ namespace Tests
         {
            // IsNotNull(_mockSimResult.Frequencies);
         }
-        private SimulationResult _mockSimResult;
+        private StatisticalResult _mockSimResult;
     }
 }

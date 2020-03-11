@@ -6,35 +6,41 @@
              xmlns:oxy="http://oxyplot.org/wpf"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-          LegendPlacement="Outside" Subtitle="(Probability Density Function)" 
+          LegendPlacement="Inside" Subtitle="(Probability Density Function)" 
           LegendPosition="RightMiddle" 
-          Title="Relative Frequency" >
+          Title="Relative Frequency" 
+          HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch"
+        LegendBorder="Black"
+        LegendBorderThickness="1"
+        LegendBackground="LightGray"
+        Background="Azure">
     <oxy:Plot.Axes>
         <oxy:CategoryAxis Title="Design Load [psi]" 
                           AbsoluteMaximum="{Binding AbsoluteMaximum}"
                           AbsoluteMinimum="-1"
                           ItemsSource="{Binding RelativePlot}"/>  
-        <oxy:LinearAxis Title="Relative Frequency [fraction]" 
+        <!--<oxy:LinearAxis Title="Relative Frequency [fraction]" 
                         Position="Left"
                     MinorGridlineColor="LightGray"
                     MinorGridlineStyle="Dot"
                     MajorGridlineStyle="Solid"
                     MajorGridlineColor="LightGray"
-                    IsZoomEnabled="True"/>
-        <oxy:LinearAxis Title="Design Load [psi]" 
+                    IsZoomEnabled="True"/>-->
+        <!--<oxy:LinearAxis Title="Design Load [psi]" 
                     Position="Bottom" 
                     MinorGridlineColor="LightGray"
                     MinorGridlineStyle="Dot"
                     MajorGridlineStyle="Solid"
                     MajorGridlineColor="LightGray"
-                    IsZoomEnabled="True"/>
+                    IsZoomEnabled="True"/>-->
     </oxy:Plot.Axes>
     <oxy:Plot.Series>
         <oxy:ColumnSeries Title="PDF"   ItemsSource="{Binding RelativePlot}"  ValueField="RelValue"/>
-        <oxy:LineSeries Title="PDF"  Color="Blue" 
+        <!--<oxy:LineSeries Title="PDF"  Color="Blue" 
                         DataFieldX="{Binding Label}"
             DataFieldY="{Binding RelValue}"
-                        StrokeThickness="2" ItemsSource="{Binding RelativeLine}"/>
+                        StrokeThickness="2" ItemsSource="{Binding RelativeLine}"/>-->
     </oxy:Plot.Series>
 
 </oxy:Plot>

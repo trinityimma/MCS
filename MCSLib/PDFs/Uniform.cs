@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MCSLib.Abstraction;
+using MCSLib.Simulation;
+using System;
 using System.Collections.Generic;
 
 namespace MCSLib.PDFs
@@ -16,7 +18,7 @@ namespace MCSLib.PDFs
         /// values are added in the order; minValue, maxValue, modeValue, 
         /// averageValue and standardDeviationValue in that order.</param>
         /// <returns>IEnumerable of simulated values</returns>
-        public override IList<double> GetDistribution(int iteration, params double[] uncertainties)
+        public override ISimulationResult GetDistribution(int iteration, params double[] uncertainties)
         {
             return ValidateInput(iteration, uncertainties);
         }
@@ -29,7 +31,7 @@ namespace MCSLib.PDFs
         /// averageValue and standardDeviationValue in that order.</param>
         /// <returns>IEnumerable of simulated values</returns>
 
-        public override IList<double> GetDistribution(int iteration, List<double> uncertainties)
+        public override ISimulationResult GetDistribution(int iteration, List<double> uncertainties)
         {
             return ValidateInput(iteration, uncertainties.ToArray());
         }
@@ -37,7 +39,7 @@ namespace MCSLib.PDFs
         ///  <param name="args">represent probability distribution
         ///  input parameters for simulation</param>
         /// </summary>
-        public override IList<double> GetDistribution(Params args)
+        public override ISimulationResult GetDistribution(Params args)
         {
             return ValidateInput(args.Iteration, args.Uncertainties);
         }
@@ -50,7 +52,7 @@ namespace MCSLib.PDFs
         /// values are added in the order; minValue, maxValue, modeValue, 
         /// averageValue and standardDeviationValue in that order.</param>
         /// <returns>IEnumerable of simulated values</returns>
-        public override IList<double> GetDistribution(Func<double, double> action, int iteration, params double[] args)
+        public override ISimulationResult GetDistribution(Func<double, double> action, int iteration, params double[] args)
         {
             return ValidateInputWithDelegate(action, iteration, args);
         }
@@ -63,7 +65,7 @@ namespace MCSLib.PDFs
         /// values are added in the order; minValue, maxValue, modeValue, 
         /// averageValue and standardDeviationValue in that order.</param>
         /// <returns>IEnumerable of simulated values</returns>
-        public override IList<double> GetDistribution(Func<double, double> action, int iteration, List<double> args)
+        public override ISimulationResult GetDistribution(Func<double, double> action, int iteration, List<double> args)
         {
             return ValidateInputWithDelegate(action, iteration, args.ToArray());
         }
@@ -74,45 +76,48 @@ namespace MCSLib.PDFs
         /// <param name = "args" > represent probability distribution
         ///  input parameters for simulation</param>
         /// <returns>IEnumerable of simulated values</returns>
-        public override IList<double> GetDistribution(Func<double, double> action, Params args)
+        public override ISimulationResult GetDistribution(Func<double, double> action, Params args)
         {
             return ValidateInputWithDelegate(action, args.Iteration, args.Uncertainties);
         }
 
-        private IList<double> ValidateInput(int iteration, double[] uncertainties)
+        private ISimulationResult ValidateInput(int iteration, double[] uncertainties)
         {
             if (uncertainties.Length != 2)
                 throw new ArgumentOutOfRangeException("uncertainties", "uncertainties for uniform distribution must have two values, minValue and maxValue");
             return GetUniformDistribution(iteration, uncertainties[0], uncertainties[1]);
         }
-        private IList<double> ValidateInputWithDelegate(Func<double, double> action,int iteration, double[] uncertainties)
+        private ISimulationResult ValidateInputWithDelegate(Func<double, double> action,int iteration, double[] uncertainties)
         {
             if (uncertainties.Length != 2)
                 throw new ArgumentOutOfRangeException("uncertainties", "uncertainties for uniform distribution must have two values, minValue and maxValue");
             return GetUniformDistribution(action, iteration, uncertainties[0], uncertainties[1]);
         }
-        private IList<double> GetUniformDistribution(int iteration, double minValue, double maxValue)
+        private ISimulationResult GetUniformDistribution(int iteration, double minValue, double maxValue)
         {
             Random rand = new Random();
-            var results = new List<double>();
+            _result.SimulatedValues.Clear();
+            _result.FittedValues.Clear();
             for (int i = 0; i < iteration; i++)
             {
                 double ans = minValue + (maxValue - minValue) * rand.NextDouble();
-                results.Add(ans);
+                _result.SimulatedValues.Add(ans);
             }
-            return results;
+            return _result;
         }
 
-        private IList<double> GetUniformDistribution(Func<double, double> action, int iteration, double minValue, double maxValue)
+        private ISimulationResult GetUniformDistribution(Func<double, double> action, int iteration, double minValue, double maxValue)
         {
             Random rand = new Random();
-            var results = new List<double>();
+            _result.SimulatedValues.Clear();
+            _result.FittedValues.Clear();
             for (int i = 0; i < iteration; i++)
             {
                 double ans = minValue + (maxValue - minValue) * rand.NextDouble();
-                results.Add(action(ans));
+                _result.SimulatedValues.Add(action(ans));
             }
-            return results;
+            return _result;
         }
+
     }
 }
