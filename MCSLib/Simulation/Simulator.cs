@@ -20,8 +20,10 @@ namespace MCSLib.Simulation
             SimulationResult = ToggleDistribution(_distributionInput, _distributionType);
             _statisticalInput.Interval = _distributionInput.Interval;
             _statisticalInput.Iteration = _distributionInput.Iteration;
-            _statisticalInput.MinValue = SimulationResult.FittedValues.Min();
-            _statisticalInput.MaxValue = SimulationResult.FittedValues.Max();
+            _statisticalInput.FitMinValue = SimulationResult.FittedValues.Min();
+            _statisticalInput.FitMaxValue = SimulationResult.FittedValues.Max();
+            _statisticalInput.MaxValue = SimulationResult.SimulatedValues.Max();
+            _statisticalInput.MaxValue = SimulationResult.SimulatedValues.Min();
             return GetSimResult(_statisticalInput, SimulationResult.FittedValues);
         }
         /// <summary>
@@ -39,8 +41,10 @@ namespace MCSLib.Simulation
                     _statisticalInput = new StatisticalInput();
                 _statisticalInput.Interval = distributionInput.Interval;
                 _statisticalInput.Iteration = distributionInput.Iteration;
-                _statisticalInput.MinValue = SimulationResult.FittedValues.Min();
-                _statisticalInput.MaxValue = SimulationResult.FittedValues.Max();
+                _statisticalInput.FitMinValue = SimulationResult.FittedValues.Min();
+                _statisticalInput.FitMaxValue = SimulationResult.FittedValues.Max();
+                _statisticalInput.MaxValue = SimulationResult.SimulatedValues.Max();
+                _statisticalInput.MinValue = SimulationResult.SimulatedValues.Min();
                 return GetSimResult(_statisticalInput, SimulationResult.FittedValues);
             }
              throw new ArgumentException();
@@ -72,6 +76,7 @@ namespace MCSLib.Simulation
             var cumFrequencies = MathUtils.GetCumFrequency(statisticalInput, distribution);
             var expectations = MathUtils.GetExpectation(statisticalInput, distribution);
             var binSizes = MathUtils.GetBinSizes(statisticalInput.MaxValue, statisticalInput.MinValue, statisticalInput.Interval);
+            var fittedbinSizes = MathUtils.GetBinSizes(statisticalInput.FitMaxValue, statisticalInput.FitMinValue, statisticalInput.Interval);
             for (int i = 0; i < _statisticalInput.Interval; i++)
             {
                 SimulationResults.Add(new StatisticalResult()
@@ -79,6 +84,7 @@ namespace MCSLib.Simulation
                     Expectation = expectations[i],
                     RelativeFrequency = relFrequencies[i],
                     CumulativeFrequency = cumFrequencies[i],
+                    FittedBinSize= fittedbinSizes[i],
                     BinSize= binSizes[i]
 
                 });

@@ -68,11 +68,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Controls\ExpectationChart.xaml.cs">
-      <DependentUpon>ExpectationChart.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\RelativeChart.xaml.cs">
-      <DependentUpon>RelativeChart.xaml</DependentUpon>
+    <Compile Include="Controls\ExpectationLiveChart.xaml.cs">
+      <DependentUpon>ExpectationLiveChart.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\RelativeLiveChart.xaml.cs">
       <DependentUpon>RelativeLiveChart.xaml</DependentUpon>
@@ -83,11 +80,7 @@
     <Compile Include="Converters.cs" />
     <Compile Include="ViewModel.cs" />
     <Compile Include="Command.cs" />
-    <Page Include="Controls\ExpectationChart.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\RelativeChart.xaml">
+    <Page Include="Controls\ExpectationLiveChart.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

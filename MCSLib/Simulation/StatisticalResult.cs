@@ -16,6 +16,11 @@
         /// </summary>
         public double BinSize { get; set; }
         /// <summary>
+        /// Returns the Fitted Bin Size 
+        /// calculated from the simulated results
+        /// </summary>
+        public double FittedBinSize { get; set; }
+        /// <summary>
         /// Returns the cumulative frequency 
         /// calculated from the simulated results
         /// </summary>

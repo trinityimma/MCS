@@ -41,12 +41,16 @@ namespace MCS
             IsChartView = true;
             ColumnValues = new ChartValues<double>();
             LineValues = new ChartValues<double>();
+            ExpectationValues = new ChartValues<double>();
             Labels = new string[SimResultList.Count];
+            ExpectationLables = new string[SimResultList.Count];
             for (int i = 0; i < SimResultList.Count; i++)
             {
                 ColumnValues.Add(SimResultList[i].RelativeFrequency);
                 Labels[i] = _simulatedValues[i].ToString();
                 LineValues.Add(SimResultList[i].RelativeFrequency);
+                ExpectationValues.Add(SimResultList[i].Expectation);
+                ExpectationLables[i] = SimResultList[i].BinSize.ToString();
             }
             //RelativePlot = new ObservableCollection<RelItem>();
             //ExpectationPlot = new ObservableCollection<DataPoint>();
@@ -253,21 +257,7 @@ namespace MCS
             set { relativePlot = value; RaisePropertyChanged(); }
         }
 
-        //private ObservableCollection<DataPoint> expectationPlot;
-
-        //public ObservableCollection<DataPoint> ExpectationPlot
-        //{
-        //    get { return expectationPlot; }
-        //    set { expectationPlot = value; RaisePropertyChanged(); }
-        //}
-
-        //private ObservableCollection<DataPoint> relLine;
-
-        //public ObservableCollection<DataPoint> RelativeLine
-        //{
-        //    get { return relLine; }
-        //    set { relLine = value; RaisePropertyChanged(); }
-        //}
+       
 
         private bool isChartView;
 
@@ -321,6 +311,14 @@ namespace MCS
             set { lables = value; RaisePropertyChanged(); }
         }
 
+        private string[] expectationLables;
+
+        public string[] ExpectationLables
+        {
+            get { return expectationLables; }
+            set { expectationLables = value; RaisePropertyChanged(); }
+        }
+
         private Func<double, string> formater;
 
         public Func<double, string> Formatter
@@ -343,34 +341,15 @@ namespace MCS
             set { columnvalues = value; RaisePropertyChanged(); }
         }
 
-        private void Plotter()
-        {
-            ColumnValues = new ChartValues<double>();
-            LineValues = new ChartValues<double>();
-             Labels = new string[SimResultList.Count];
-            for (int i = 0; i < SimResultList.Count; i++)
-            {
-                ColumnValues.Add(SimResultList[i].RelativeFrequency);
-                Labels[i] = _simulatedValues[i].ToString();
-                LineValues.Add(SimResultList[i].RelativeFrequency);
-            }
-            //SeriesCollection = new SeriesCollection
-            //{
-            //    new ColumnSeries
-            //    {
-            //        Title = "Histogram",
-            //        Values = values
-            //    },
-            //    new LineSeries
-            //    {
-            //        Title = "PDF",
-            //        Values = LineValues,
-            //    }
-            //};
+        private ChartValues<double> expectationvalues;
 
-           
-            Formatter = value => value.ToString();
+        public ChartValues<double> ExpectationValues
+        {
+            get { return expectationvalues; }
+            set { expectationvalues = value; RaisePropertyChanged(); }
         }
+
+       
     }
 
     public class ColumnItem

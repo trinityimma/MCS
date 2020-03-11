@@ -91,7 +91,7 @@
             <StackPanel Grid.Row="1" Orientation="Horizontal" 
                         Margin="2"
                         HorizontalAlignment="Right">
-                <TextBlock Text="Working Stress Load:"
+                <TextBlock Text="Net Load:"
                            VerticalAlignment="Center"
                            />
                 <TextBox Width="100" Height="23"
@@ -118,10 +118,21 @@
                 <con:TableResult Grid.ColumnSpan="2" 
                                  Visibility="{Binding IsTableView,
                                  Converter={StaticResource bool2Visibility}}"/>
-                <con:RelativeLiveChart Grid.Column="0" Visibility="{Binding IsChartView,
-                                 Converter={StaticResource bool2Visibility}}"/>
-                <con:ExpectationChart Grid.Column="1" Visibility="{Binding IsChartView,
-                                 Converter={StaticResource bool2Visibility}}"/>
+                <Border Grid.Column="0" Margin="5"
+                        BorderThickness="2"
+                        BorderBrush="LightGray"
+                        Visibility="{Binding IsChartView,
+                                 Converter={StaticResource bool2Visibility}}">
+                    <con:RelativeLiveChart />
+                </Border>
+                <Border Grid.Column="1"
+                         Margin="5"
+                         BorderThickness="2"
+                        BorderBrush="LightGray"
+                         Visibility="{Binding IsChartView,
+                                 Converter={StaticResource bool2Visibility}}">
+                    <con:ExpectationLiveChart />
+                </Border>
             </Grid>
         </Grid>
     </Border>

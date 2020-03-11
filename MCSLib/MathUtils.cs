@@ -63,7 +63,7 @@ namespace MCSLib
         {
             double lowerBound = -1;
             double upperBound = 0;
-            IList<double> binSizes = GetBinSizes(statisticalInput.MaxValue, statisticalInput.MinValue, statisticalInput.Interval);
+            IList<double> binSizes = GetBinSizes(statisticalInput.FitMaxValue, statisticalInput.FitMinValue, statisticalInput.Interval);
             List<double> result = new List<double>();
             int dataNum = statisticalInput.Iteration - statisticalInput.Interval;
 
