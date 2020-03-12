@@ -4,3 +4,4 @@ C:\Users\john.ansa\Desktop\2020\private\New folder\MCS\MCSLib\obj\Debug\MCSLib.c
 C:\Users\john.ansa\Desktop\2020\private\New folder\MCS\MCSLib\obj\Debug\MCSLib.dll
 C:\Users\john.ansa\Desktop\2020\private\New folder\MCS\MCSLib\obj\Debug\MCSLib.pdb
 C:\Users\john.ansa\Desktop\2020\private\New folder\MCS\MCSLib\bin\Debug\MCSLib.xml
+C:\Users\john.ansa\Desktop\2020\private\New folder\MCS\MCSLib\obj\Debug\MCSLib.csprojAssemblyReference.cache

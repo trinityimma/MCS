@@ -102,6 +102,7 @@ namespace MCSLib.PDFs
             {
                 double ans = minValue + (maxValue - minValue) * rand.NextDouble();
                 _result.SimulatedValues.Add(ans);
+                _result.FittedValues.Add(ans);
             }
             return _result;
         }
@@ -115,6 +116,7 @@ namespace MCSLib.PDFs
             {
                 double ans = minValue + (maxValue - minValue) * rand.NextDouble();
                 _result.SimulatedValues.Add(action(ans));
+                _result.FittedValues.Add(action(ans));
             }
             return _result;
         }
