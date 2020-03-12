@@ -33,3 +33,37 @@ C:\Users\john.ansa\Desktop\2020\private\New folder\MCS\obj\Debug\Controls\Relati
 C:\Users\john.ansa\Desktop\2020\private\New folder\MCS\obj\Debug\Controls\RelativeLiveChart.g.cs
 C:\Users\john.ansa\Desktop\2020\private\New folder\MCS\obj\Debug\Controls\ExpectationLiveChart.baml
 C:\Users\john.ansa\Desktop\2020\private\New folder\MCS\obj\Debug\Controls\ExpectationLiveChart.g.cs
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\bin\Debug\MCS.exe.config
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\bin\Debug\MCS.exe
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\bin\Debug\MCS.pdb
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\bin\Debug\LiveCharts.dll
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\bin\Debug\MCSLib.dll
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\bin\Debug\OxyPlot.dll
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\bin\Debug\OxyPlot.Wpf.dll
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\bin\Debug\MCSLib.pdb
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\bin\Debug\MCSLib.xml
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\bin\Debug\LiveCharts.pdb
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\bin\Debug\LiveCharts.xml
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\bin\Debug\OxyPlot.Wpf.xml
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\obj\Debug\MCS.csprojAssemblyReference.cache
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\obj\Debug\Controls\ExpectationLiveChart.baml
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\obj\Debug\Controls\RelativeLiveChart.baml
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\obj\Debug\Controls\TableResult.baml
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\obj\Debug\Controls\ExpectationLiveChart.g.cs
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\obj\Debug\Controls\RelativeLiveChart.g.cs
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\obj\Debug\Controls\TableResult.g.cs
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\obj\Debug\MainWindow.g.cs
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\obj\Debug\App.g.cs
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\obj\Debug\MCS_MarkupCompile.cache
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\obj\Debug\MCS_MarkupCompile.lref
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\obj\Debug\MainWindow.baml
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\obj\Debug\MCS.g.resources
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\obj\Debug\MCS.Properties.Resources.resources
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\obj\Debug\MCS.csproj.GenerateResource.cache
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\obj\Debug\MCS.csproj.CopyComplete
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\obj\Debug\MCS.exe
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\obj\Debug\MCS.pdb

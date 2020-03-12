@@ -13,3 +13,17 @@ C:\Users\john.ansa\Desktop\2020\private\New folder\MCS\Tests\bin\Debug\nunit.eng
 C:\Users\john.ansa\Desktop\2020\private\New folder\MCS\Tests\bin\Debug\nunit.engine.dll
 C:\Users\john.ansa\Desktop\2020\private\New folder\MCS\Tests\bin\Debug\nunit.framework.xml
 C:\Users\john.ansa\Desktop\2020\private\New folder\MCS\Tests\bin\Debug\MCSLib.xml
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\Tests\bin\Debug\Tests.dll
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\Tests\bin\Debug\Tests.pdb
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\Tests\bin\Debug\MCSLib.dll
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\Tests\bin\Debug\nunit.framework.dll
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\Tests\bin\Debug\NUnit3.TestAdapter.dll
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\Tests\bin\Debug\nunit.engine.api.dll
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\Tests\bin\Debug\nunit.engine.dll
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\Tests\bin\Debug\MCSLib.pdb
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\Tests\bin\Debug\MCSLib.xml
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\Tests\bin\Debug\nunit.framework.xml
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\Tests\obj\Debug\Tests.csprojAssemblyReference.cache
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\Tests\obj\Debug\Tests.csproj.CopyComplete
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\Tests\obj\Debug\Tests.dll
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\Tests\obj\Debug\Tests.pdb

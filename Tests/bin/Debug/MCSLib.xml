@@ -397,6 +397,12 @@
             calculated from the simulated results
             </summary>
         </member>
+        <member name="P:MCSLib.Simulation.StatisticalResult.FittedBinSize">
+            <summary>
+            Returns the Fitted Bin Size 
+            calculated from the simulated results
+            </summary>
+        </member>
         <member name="P:MCSLib.Simulation.StatisticalResult.CumulativeFrequency">
             <summary>
             Returns the cumulative frequency 

@@ -23,9 +23,9 @@
                 <lvc:Axis Title="Design Load [psi]" 
                           Labels="{Binding Labels}"
                           Foreground="Black" FontSize="12">
-                <!--<lvc:Axis.Separator >
-                    <lvc:Separator StrokeThickness="3" Stroke="Black" StrokeDashArray="1"   />
-                </lvc:Axis.Separator>-->
+                <lvc:Axis.Separator >
+                    <lvc:Separator StrokeThickness="1" Stroke="DarkGray" StrokeDashArray="0" Step="10"  />
+                </lvc:Axis.Separator>
             </lvc:Axis>
                 
             </lvc:CartesianChart.AxisX>

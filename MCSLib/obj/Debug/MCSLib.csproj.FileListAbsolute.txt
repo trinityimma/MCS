@@ -5,3 +5,9 @@ C:\Users\john.ansa\Desktop\2020\private\New folder\MCS\MCSLib\obj\Debug\MCSLib.d
 C:\Users\john.ansa\Desktop\2020\private\New folder\MCS\MCSLib\obj\Debug\MCSLib.pdb
 C:\Users\john.ansa\Desktop\2020\private\New folder\MCS\MCSLib\bin\Debug\MCSLib.xml
 C:\Users\john.ansa\Desktop\2020\private\New folder\MCS\MCSLib\obj\Debug\MCSLib.csprojAssemblyReference.cache
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\MCSLib\bin\Debug\MCSLib.xml
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\MCSLib\bin\Debug\MCSLib.dll
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\MCSLib\bin\Debug\MCSLib.pdb
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\MCSLib\obj\Debug\MCSLib.csprojAssemblyReference.cache
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\MCSLib\obj\Debug\MCSLib.dll
+C:\Users\immaculatemary amara\Documents\Visual Studio 2019\Project\MCS\MCSLib\obj\Debug\MCSLib.pdb
