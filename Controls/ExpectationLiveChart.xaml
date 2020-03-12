@@ -26,7 +26,7 @@
     </lvc:CartesianChart.AxisX>
     <lvc:CartesianChart.AxisY>
         <lvc:Axis Title="Probability of Uncertainty [fraction]" 
-                  LabelFormatter="{Binding Formatter}"
+                  LabelFormatter="{Binding Formatter}" MinValue="0"
                   Foreground="Black" FontSize="12"></lvc:Axis>
     </lvc:CartesianChart.AxisY>
 </lvc:CartesianChart>

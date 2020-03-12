@@ -46,22 +46,15 @@ namespace MCS
             ExpectationLables = new string[SimResultList.Count];
             for (int i = 0; i < SimResultList.Count; i++)
             {
-                ColumnValues.Add(SimResultList[i].RelativeFrequency);
-                Labels[i] = _simulatedValues[i].ToString();
-                LineValues.Add(SimResultList[i].RelativeFrequency);
-                ExpectationValues.Add(SimResultList[i].Expectation);
-                ExpectationLables[i] = SimResultList[i].BinSize.ToString();
+                if (SimResultList[i].RelativeFrequency >= 0)
+                {
+                    ColumnValues.Add(SimResultList[i].RelativeFrequency);
+                    Labels[i] = Math.Round(_simulatedValues[i], 0).ToString();
+                    LineValues.Add(SimResultList[i].RelativeFrequency);
+                    ExpectationValues.Add(SimResultList[i].Expectation);
+                    ExpectationLables[i] = Math.Round(SimResultList[i].BinSize, 0).ToString();
+                }
             }
-            //RelativePlot = new ObservableCollection<RelItem>();
-            //ExpectationPlot = new ObservableCollection<DataPoint>();
-            //RelativeLine = new ObservableCollection<DataPoint>();
-            //for (int i = 0; i < SimResultList.Count; i++)
-            //{
-            //    RelativePlot.Add(new RelItem { RelValue=SimResultList[i].RelativeFrequency,Label= _simulatedValues[i] });
-            //    ExpectationPlot.Add(new DataPoint(SimResultList[i].BinSize, SimResultList[i].Expectation));
-            //    RelativeLine.Add(new DataPoint(SimResultList[i].BinSize, SimResultList[i].RelativeFrequency));
-            //    AbsoluteMaximum = RelativePlot.Count;
-            //}
             Formatter = value => value.ToString();
         }
 
