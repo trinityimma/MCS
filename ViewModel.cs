@@ -52,7 +52,6 @@ namespace MCS
                     Labels[i] = Math.Round(_simulatedValues[i], 0).ToString();
                     LineValues.Add(SimResultList[i].RelativeFrequency);
                     ExpectationValues.Add(SimResultList[i].Expectation);
-                    ExpectaValues.Add(SimResultList[i].RelativeFrequency);
                     ExpectationLables[i] = Math.Round(SimResultList[i].BinSize, 0).ToString();
                 }
             }
@@ -343,13 +342,6 @@ namespace MCS
             set { expectationvalues = value; RaisePropertyChanged(); }
         }
 
-        private ChartValues<double> expectavalues;
-
-        public ChartValues<double> ExpectaValues
-        {
-            get { return expectavalues; }
-            set { expectavalues = value; RaisePropertyChanged(); }
-        }
     }
 
     public class ColumnItem
